@@ -1,0 +1,972 @@
+{
+  "milestones": {
+    "Twilight Strand": 1,
+    "Southern Forest": 2,
+    "City of Sarn": 3,
+    "Aqueduct": 4,
+    "Slave Pens": 5,
+    "The Bridge Encampment": 7,
+    "Sarn Ramparts": 8,
+    "Blood Aqueduct": 9,
+    "Oriath Docks": 10
+  },
+
+  "zones": {
+    "Twilight Strand": {
+      "1": { "steps": ["Kill Hillock (far end of beach)", "Go to Town"] }
+    },
+    "Lioneye's Watch": {
+      "1": { "steps": ["Talk to NPCs", "Go to The Coast"] },
+      "6": { "steps": ["Talk to NPCs", "Go to The Coast"] }
+    },
+    "The Coast": {
+      "1": {
+        "steps": [
+          "Tag Waypoint (follow beach, mid-zone left side)",
+          "Go to Tidal Island (near WP, branch south) — once per league",
+          "Kill Hailrake, get Medicine Chest (→ Quicksilver Flask from town)",
+          "Go to Mud Flats (top of beach)"
+        ]
+      },
+      "6": {
+        "steps": [
+          "Tag Waypoint (follow beach, mid-zone left side)",
+          "Go to Tidal Island (near WP, branch south)",
+          "Get Bestel's Manuscript",
+          "TP to Town, talk to NPCs",
+          "Go to Mud Flats (top of beach)"
+        ]
+      }
+    },
+    "Tidal Island": {
+      "1": { "steps": ["Kill Hailrake (far end of island)", "Get Medicine Chest", "TP to Town"] },
+      "6": { "steps": ["Get Bestel's Manuscript (far end of island)", "TP to Town"] }
+    },
+    "Mud Flats": {
+      "1": {
+        "steps": [
+          "Get Roseus Glyph, Ammonite Glyph, Haliotis Glyph from Rhoa Nests (scattered across zone)",
+          "Activate Strange Glyph Wall (top of zone)",
+          "Go to Submerged Passage (top-right exit)"
+        ]
+      },
+      "6": {
+        "steps": [
+          "Kill Dishonoured Queen (mid-zone)",
+          "Take Eye of Conquest",
+          "Go to Karui Fortress (top/left exit)"
+        ]
+      }
+    },
+    "Submerged Passage": {
+      "1": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Flooded Depths (side branch off main path)", "Then go to The Ledge (far end)"] }
+    },
+    "Flooded Depths": {
+      "1": { "steps": ["Kill Dweller of the Deep (centre of cave)", "TP to Town"] }
+    },
+    "The Ledge": {
+      "1": { "steps": ["Tag Waypoint (right at entrance warp)", "Go to The Climb (follow ledge to far end)"] }
+    },
+    "The Climb": {
+      "1": { "steps": ["Enter Lower Prison (top of zone)"] }
+    },
+    "Lower Prison": {
+      "1": { "steps": ["Tag Waypoint (follow main corridor from entrance)", "Once per league: Complete Trial (side room off corridor)", "Go to Upper Prison (far end)"] },
+      "6": { "steps": ["Tag Waypoint (left of entrance warp)", "Once per league: Solve Trial (side room)", "Go to Shavronne's Tower (far end)"] }
+    },
+    "Upper Prison": {
+      "1": { "steps": ["Enter Warden's Quarters (top of floor)", "Follow blood trail to Warden's Chambers"] }
+    },
+    "Warden's Chambers": {
+      "1": { "steps": ["Kill Brutus (main chamber, far end)", "Go to Prisoner's Gate", "Tag WP (near entry)", "TP to Town"] }
+    },
+    "Prisoner's Gate": {
+      "1": { "steps": ["Go to Ship Graveyard (follow road)"] },
+      "6": {
+        "steps": [
+          "Go to Valley of the Fire Drinker (middle-right exit)",
+          "Defeat Abberath (boss arena)",
+          "Enter Cloven Pass → Valley of the Soul Drinker",
+          "Finish off Abberath",
+          "Go to Western Forest (exit)"
+        ]
+      }
+    },
+    "Ship Graveyard": {
+      "1": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Enter Ship Graveyard Cave (side of zone, look for cave entrance)",
+          "Pick up Allflame, kill Fairgraves (inside cave)",
+          "TP to Town, talk to NPCs",
+          "Go to Cavern of Wrath (far end of graveyard)"
+        ]
+      }
+    },
+    "Ship Graveyard Cave": {
+      "1": { "steps": ["Pick up Allflame (chest inside)", "Exit cave", "Kill Fairgraves (outside near cave exit)", "TP to Town"] }
+    },
+    "Cavern of Wrath": {
+      "1": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Cavern of Anger (follow cave path)", "Enter Merveil's Lair (far end)"] }
+    },
+    "Cavern of Anger": {
+      "1": { "steps": ["Enter Merveil's Lair (far end of cavern)"] },
+      "6": { "steps": ["Take The Black Flag from chest (near entrance)", "Go to Beacon (follow cave path out)"] }
+    },
+    "Merveil's Lair": {
+      "1": { "steps": ["Kill Merveil (first chamber)", "Kill Merveil the Twisted (second chamber)", "Go to Act II"] }
+    },
+
+    "Southern Forest": {
+      "2": { "steps": ["Enter The Forest Encampment (town, follow road)", "Go to Old Fields (top-right exit)"] },
+      "6": { "steps": ["Tag Waypoint (end of area, follow road)", "Go to Cavern of Anger (near WP)"] }
+    },
+    "The Forest Encampment": {
+      "2": { "steps": ["Talk to NPCs", "Go to Old Fields (top-right exit)"] }
+    },
+    "Old Fields": {
+      "2": {
+        "steps": [
+          "Enter The Den (optional, side path) — kill Great White Beast for Quicksilver Flask",
+          "Go to Crossroads (follow main road)"
+        ]
+      }
+    },
+    "Crossroads": {
+      "2": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Go to Chamber of Sins Level 1 (up/left fork)",
+          "Later: go to Broken Bridge (up/right fork)",
+          "Later: go to Fellshrine Ruins (right/down fork)"
+        ]
+      },
+      "7": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Go to Fellshrine Ruins (down/right fork)",
+          "Later: go to Chamber of Sins (left fork)"
+        ]
+      }
+    },
+    "Chamber of Sins Level 1": {
+      "2": { "steps": ["Tag Waypoint (centre of zone)", "Go to Chamber of Sins Level 2 (stairs down)"] },
+      "7": {
+        "steps": [
+          "Tag Waypoint (centre of zone)",
+          "Place Maligaro's Map into Map Device (centre room), activate portal",
+          "Enter Maligaro's Sanctum",
+          "Later: talk to Silk for Obsidian Key",
+          "Go to Chamber of Sins Level 2 (stairs down)"
+        ]
+      }
+    },
+    "Chamber of Sins Level 2": {
+      "2": {
+        "steps": [
+          "Once per league: Solve Trial (side room)",
+          "Kill Fidelitas (boss room, far end)",
+          "Take Baleful Gem",
+          "TP to Town"
+        ]
+      },
+      "7": {
+        "steps": [
+          "Once per league: Solve Trial (side room)",
+          "Open Secret Passage (top/right wall)",
+          "Go to Den (through passage)"
+        ]
+      }
+    },
+    "Broken Bridge": {
+      "2": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Kill or Save Kraityn (mid-zone, along the road)",
+          "Take Kraityn's Amulet",
+          "TP to Town"
+        ]
+      },
+      "7": { "steps": ["Go to Crossroads (follow road/left)"] }
+    },
+    "Fellshrine Ruins": {
+      "2": { "steps": ["Go to Crypt Level 1 (ruins entrance, follow path)"] },
+      "7": { "steps": ["Go to Crypt (follow road then right into ruins)"] }
+    },
+    "Crypt Level 1": {
+      "2": { "steps": ["Once per league: Solve Trial (side room)", "Go to Crypt Level 2 (stairs down)"] },
+      "7": {
+        "steps": [
+          "Tag Waypoint (left of entrance warp)",
+          "Once per league: Solve Trial (side room)",
+          "Open Sarcophagus (main chamber)",
+          "Go to Crypt Level 2 (stairs down)"
+        ]
+      }
+    },
+    "Crypt Level 2": {
+      "2": { "steps": ["Take Golden Hand (main chamber)", "TP to Town — talk to Yeena for skill point"] },
+      "7": { "steps": ["Take Maligaro's Map (main chamber)", "TP to Town"] }
+    },
+    "Riverways": {
+      "2": {
+        "steps": [
+          "Tag Waypoint (follow broken road from entrance)",
+          "Go to Western Forest (down exit)",
+          "Later: Go to Wetlands (up/left exit)"
+        ]
+      },
+      "7": { "steps": ["Tag Waypoint (follow broken road from entrance)", "Go to Wetlands (up/left exit)"] }
+    },
+    "Western Forest": {
+      "2": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Kill or Save Alira (left/top from WP)",
+          "Kill Captain Arteri (end of road, far side)",
+          "Take Thaumetic Emblem",
+          "Open Thaumetic Seal (on the road)",
+          "Go to Weaver's Chambers (opposite side from Alira)"
+        ]
+      },
+      "6": { "steps": ["Tag Waypoint (follow road from entrance)", "Go to Riverways (exit, follow road)"] },
+      "7": { "steps": ["Tag Waypoint (follow road from entrance)", "Go to Riverways (exit, follow road)"] }
+    },
+    "Weaver's Chambers": {
+      "2": {
+        "steps": [
+          "Enter Weaver's Nest (centre of chambers)",
+          "Kill Weaver (inside nest)",
+          "Take Maligaro's Spike",
+          "TP to Town"
+        ]
+      }
+    },
+    "Wetlands": {
+      "2": {
+        "steps": [
+          "Kill or Save Oak (centre of wetlands)",
+          "Take Oak's Amulet",
+          "Remove Tree Roots (near Oak)",
+          "Go to Vaal Ruins (top/right exit)"
+        ]
+      },
+      "6": {
+        "steps": [
+          "Enter Spawning Ground (mid-zone)",
+          "Destroy 3 Ryslatha's Nests (inside Spawning Ground)",
+          "Kill Ryslatha (boss spawns after nests destroyed)",
+          "TP to Town"
+        ]
+      },
+      "7": {
+        "steps": [
+          "Collect 7 Fireflies (scattered across zone)",
+          "Go to Den of Despair (centre of zone)",
+          "Kill Gruthkul (inside Den of Despair)",
+          "TP to Town"
+        ]
+      }
+    },
+    "Vaal Ruins": {
+      "2": { "steps": ["Activate Ancient Seal (centre of ruins)", "Go to Northern Forest (top exit)"] }
+    },
+    "Northern Forest": {
+      "2": {
+        "steps": [
+          "Tag Waypoint (top of zone, follow path)",
+          "TP to Town — talk to Eramir/bandit for The Apex",
+          "WP back",
+          "Go to Caverns (top exit)"
+        ]
+      },
+      "7": {
+        "steps": [
+          "Tag Waypoint (top of zone, follow path)",
+          "Go to Causeway (top right/left exit)"
+        ]
+      }
+    },
+    "Caverns": {
+      "2": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Ancient Pyramid (far end) — enter Pyramid Apex"] }
+    },
+    "Pyramid Apex": {
+      "2": { "steps": ["Activate Dark Altar (centre of apex)", "Kill Vaal Oversoul (main chamber)", "Go to Act II transition"] }
+    },
+
+    "City of Sarn": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (follow path from entrance arch)",
+          "Kill Guard Captain (mid-zone, near arch)",
+          "Talk to Clarissa (mid-zone)",
+          "Go to Town (Sarn Encampment, follow path)"
+        ]
+      }
+    },
+    "Sarn Encampment": {
+      "3": { "steps": ["Talk to NPCs", "Go to Slums (top-right exit)"] },
+      "8": { "steps": ["Talk to NPCs", "Go to Toxic Conduits (left exit)"] }
+    },
+    "Slums": {
+      "3": { "steps": ["Go to Crematorium (left exit, follow slums path)", "Later: open Sewer Grating (top of slums, with Sewer Keys)"] }
+    },
+    "Crematorium": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (main hall, follow corridor in)",
+          "Once per league: Solve Trial (side room off main hall)",
+          "Kill Piety (final chamber, far end)",
+          "Get Tolman's Bracelet",
+          "TP to Town — get Sewer Keys from Clarissa"
+        ]
+      }
+    },
+    "Sewers": {
+      "3": {
+        "steps": [
+          "Take Bust of Gaius Sentari (near entrance, first area)",
+          "Tag Waypoint (central junction, follow left from entrance)",
+          "Take Bust of Hector Titucius and Bust of Marceus Lioneye (far branches of sewers)",
+          "Go to Marketplace (top exit)",
+          "Later: open Undying Blockage (right branch) → go to Ebony Barracks"
+        ]
+      }
+    },
+    "Marketplace": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (near entrance from Sewers)",
+          "Once per league: Go to Catacombs (near WP), Solve Trial",
+          "TP to Town, talk to NPCs",
+          "Go to Battlefront (up/left exit)"
+        ]
+      }
+    },
+    "Battlefront": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Take Ribbon Spool (large chest, mid-zone)",
+          "Go to Docks (left exit)",
+          "Later: Go to Solaris Temple Level 1 (top exit)"
+        ]
+      }
+    },
+    "Docks": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (follow dock road, near Fairgraves)",
+          "Take Thaumetic Sulphite (chest near WP)",
+          "TP to Town"
+        ]
+      }
+    },
+    "Solaris Temple Level 1": {
+      "3": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Solaris Temple Level 2 (stairs up)"] },
+      "8": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Solaris Temple Level 2 (up from WP)"] }
+    },
+    "Solaris Temple Level 2": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (left of entrance warp)",
+          "Talk to Dialla for Infernal Talc (mid-level)",
+          "WP to Sewers — open Undying Blockage (right branch of Sewers)"
+        ]
+      },
+      "8": {
+        "steps": [
+          "Kill Dawn (boss chamber, far end)",
+          "Take Sun Orb",
+          "TP to Town"
+        ]
+      }
+    },
+    "Ebony Barracks": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (left of entrance gate)",
+          "Kill General Gravicius (up, mid-barracks)",
+          "Go to Lunaris Temple Level 1 (far top exit)"
+        ]
+      }
+    },
+    "Lunaris Temple Level 1": {
+      "3": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Lunaris Temple Level 2 (stairs down)"] },
+      "8": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Lunaris Temple Level 2 (stairs down)"] }
+    },
+    "Lunaris Temple Level 2": {
+      "3": {
+        "steps": [
+          "Kill Piety (boss chamber, far end)",
+          "Take Tower Key",
+          "TP to Town, talk to NPCs"
+        ]
+      },
+      "8": {
+        "steps": [
+          "Kill Dusk (boss chamber, far end)",
+          "Take Moon Orb",
+          "TP to Town"
+        ]
+      }
+    },
+    "Imperial Gardens": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (follow main garden path from entrance)",
+          "Once per league: Solve Trial (top area, side path)",
+          "Open Locked Door (top/right, end of garden)",
+          "Go to Sceptre of God (through door)"
+        ]
+      }
+    },
+    "Sceptre of God": {
+      "3": {
+        "steps": [
+          "Tag Waypoint (bottom floor, near entrance)",
+          "Go to Upper Sceptre of God (climb up through tower)"
+        ]
+      }
+    },
+    "Upper Sceptre of God": {
+      "3": { "steps": ["Kill Dominus (top of tower, first form)", "Kill Dominus, Ascendant (second form, same room)", "Go to Act IV"] }
+    },
+
+    "Aqueduct": {
+      "4": { "steps": ["Tag Waypoint (next to entrance warp)", "Go to Town (Highgate, follow aqueduct path)"] }
+    },
+    "Highgate": {
+      "4": { "steps": ["Talk to NPCs", "Go to Dried Lake (bottom-left exit)"] },
+      "9": { "steps": ["Talk to NPCs", "Go to Descent (top-right exit)"] }
+    },
+    "Dried Lake": {
+      "4": {
+        "steps": [
+          "Kill Voll (far end of lake)",
+          "Take Deshret's Banner",
+          "TP to Town — open Deshret's Seal (near Niko in Highgate)"
+        ]
+      }
+    },
+    "Mines Level 1": {
+      "4": { "steps": ["Go to Mines Level 2 (follow mine shaft down)"] }
+    },
+    "Mines Level 2": {
+      "4": { "steps": ["Tag Deshret's Spirit (mid-zone)", "Enter Crystal Veins (far end)"] }
+    },
+    "Crystal Veins": {
+      "4": {
+        "steps": [
+          "Tag Waypoint (centre of cave, follow path from entrance)",
+          "Go to Kaom's Dream (left portal)",
+          "Later: Go to Daresso's Dream (right portal, talk to Dialla first)",
+          "Later: Go to Belly of the Beast Level 1 (bottom portal, talk to Dialla)"
+        ]
+      }
+    },
+    "Kaom's Dream": {
+      "4": { "steps": ["Go to Kaom's Stronghold (follow dream path)"] }
+    },
+    "Kaom's Stronghold": {
+      "4": {
+        "steps": [
+          "Tag Waypoint (top-left of entrance warp)",
+          "Go to Caldera of the King (follow path through stronghold)",
+          "Kill King Kaom (inside Caldera)",
+          "Take The Eye of Fury",
+          "TP to Town — WP to Crystal Veins"
+        ]
+      }
+    },
+    "Daresso's Dream": {
+      "4": {
+        "steps": [
+          "Kill Barkhul (mid-zone guardian boss)",
+          "Go to Grand Arena (far end)"
+        ]
+      }
+    },
+    "Grand Arena": {
+      "4": {
+        "steps": [
+          "Tag Waypoint (top-left of arena entrance)",
+          "Kill Unique Trio (arena centre)",
+          "Go to Ring of Blades (inner arena)",
+          "Kill Daresso (Ring of Blades, final chamber)",
+          "Take The Eye of Desire",
+          "TP to Town — WP to Crystal Veins"
+        ]
+      }
+    },
+    "Belly of the Beast Level 1": {
+      "4": { "steps": ["Go to Belly of the Beast Level 2 (follow path down)"] },
+      "9": { "steps": ["Enter Rotting Core (far end)"] }
+    },
+    "Belly of the Beast Level 2": {
+      "4": {
+        "steps": [
+          "Enter The Bowels of the Beast (far end)",
+          "Kill Piety (Bowels boss chamber)",
+          "Go to Harvest (exit)"
+        ]
+      }
+    },
+    "Harvest": {
+      "4": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Talk to Piety (centre of Harvest)",
+          "Enter The Black Core (centre portal)",
+          "Kill Shavronne (left portal) — take Malachai's Entrails",
+          "Kill Maligaro (right portal) — take Malachai's Heart",
+          "Kill Doedre (bottom portal) — take Malachai's Lungs",
+          "Return to Harvest — talk to Piety — re-enter Black Core",
+          "Kill Piety then Malachai (final chamber)"
+        ]
+      }
+    },
+    "Ascent": {
+      "4": { "steps": ["Walk to summit (follow path up)", "Activate Lever (top of ascent)", "Go to Act V"] }
+    },
+
+    "Slave Pens": {
+      "5": {
+        "steps": [
+          "Tag Waypoint (left of entrance warp)",
+          "Kill Overseer Krow (mid-zone)",
+          "Go to Town (Overseer's Tower, follow path)"
+        ]
+      }
+    },
+    "Overseer's Tower": {
+      "5": { "steps": ["Talk to NPCs", "Go to Control Blocks (exit)"] }
+    },
+    "Control Blocks": {
+      "5": {
+        "steps": [
+          "Pick up Miasmeter (down/left from entrance)",
+          "Kill Justicar Casticus (top/right area)",
+          "Take Eyes of Zeal",
+          "Go to Oriath Square (exit)"
+        ]
+      },
+      "10": {
+        "steps": [
+          "Tag Waypoint (left of entrance)",
+          "Kill Vilenta (follow right-hand wall to boss)",
+          "TP to Town"
+        ]
+      }
+    },
+    "Oriath Square": {
+      "5": {
+        "steps": [
+          "Tag Waypoint (centre of plaza)",
+          "Open Templar Courts Entrance (top-right of plaza)",
+          "Enter Templar Courts"
+        ]
+      }
+    },
+    "Templar Courts": {
+      "5": { "steps": ["Tag Waypoint (main courtyard, follow road from entrance)", "Go to Chamber of Innocence (far end of courts)"] }
+    },
+    "The Chamber of Innocence": {
+      "5": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Go to Sanctum of Innocence (leftmost corridor, then right)"
+        ]
+      }
+    },
+    "Sanctum of Innocence": {
+      "5": {
+        "steps": [
+          "Kill High Templar Avarius (main sanctum chamber)",
+          "Kill Innocence (same room, second form)",
+          "Go back to Chamber of Innocence → Torched Courts"
+        ]
+      },
+      "10": {
+        "steps": [
+          "Kill Avarius (main sanctum chamber)",
+          "Take The Staff of Purity",
+          "TP to Town"
+        ]
+      }
+    },
+    "Torched Courts": {
+      "5": { "steps": ["Go to Ruined Square (exit through burned courts)"] },
+      "10": { "steps": ["Go to Desecrated Chambers (exit)"] }
+    },
+    "Ruined Square": {
+      "5": {
+        "steps": [
+          "Tag Waypoint (top-left of zone)",
+          "Go to Ossuary (near WP, top-left area)",
+          "Click Tomb, pick up Sign of Purity",
+          "TP to Town, talk to NPCs",
+          "Go to Reliquary (down exit from square)"
+        ]
+      },
+      "10": {
+        "steps": [
+          "Tag Waypoint (right/up from entrance)",
+          "Go to Torched Courts (right from WP)",
+          "Once per league: Go to Ossuary (next to WP) → Bone Pits, Solve Trial",
+          "Talk to Innocence (right from WP)",
+          "Go to Canals (down exit)"
+        ]
+      }
+    },
+    "Ossuary": {
+      "5": { "steps": ["Click Tomb (centre of ossuary)", "Pick up Sign of Purity", "TP to Town"] }
+    },
+    "Reliquary": {
+      "5": {
+        "steps": [
+          "Tag Waypoint (left of entrance warp)",
+          "Collect Tukohama's Tooth (top-left corner)",
+          "Collect Hinekora's Hair (top-right corner)",
+          "Collect Valako's Jaw (bottom corner)",
+          "TP to Town, talk to NPCs",
+          "Go to Cathedral Rooftop (exit)"
+        ]
+      }
+    },
+    "Cathedral Rooftop": {
+      "5": { "steps": ["Go to Cathedral Apex (left side of rooftop)"] },
+      "10": {
+        "steps": [
+          "Go to Cathedral Apex (top-left)",
+          "Kill Plaguewing (top-left area, guards apex entrance)",
+          "Go to Ravaged Square (bottom-right exit)"
+        ]
+      }
+    },
+    "Cathedral Apex": {
+      "5": { "steps": ["Activate Cradle of Purity (centre of apex)", "Kill Kitava (main chamber)", "Sail to Act VI"] }
+    },
+
+    "Karui Fortress": {
+      "6": {
+        "steps": [
+          "Enter Tukohama's Keep (front gate)",
+          "Kill Tukohama (right side of Keep)",
+          "Go to Ridge (exit Arena, then right)"
+        ]
+      }
+    },
+    "Ridge": {
+      "6": { "steps": ["Tag Waypoint (follow ridge path from entrance)", "Go to Lower Prison (far end of ridge)"] }
+    },
+    "Shavronne's Tower": {
+      "6": {
+        "steps": [
+          "Go to Prison Rooftop (climb tower)",
+          "Kill Brutus and Shavronne (rooftop arena)",
+          "Go to Warden's Chambers → Prisoner's Gate (descend and exit)"
+        ]
+      }
+    },
+    "Beacon": {
+      "6": {
+        "steps": [
+          "Tag Waypoint (near beacon structure, bottom of zone)",
+          "Refuel and light the Beacon (beacon at centre-top)",
+          "Talk to Weylam Roth",
+          "Sail to Brine King's Reef"
+        ]
+      }
+    },
+    "Brine King's Reef": {
+      "6": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Go to Brine King's Throne (follow reef path, far end)",
+          "Kill Tsoagoth (throne room)",
+          "Sail to Act VII"
+        ]
+      }
+    },
+
+    "The Bridge Encampment": {
+      "7": { "steps": ["Talk to NPCs", "Go to Broken Bridge (exit)"] }
+    },
+    "Ashen Fields": {
+      "7": {
+        "steps": [
+          "Tag Waypoint (follow road from entrance)",
+          "Go to Fortress Encampment (left/down, follow road)"
+        ]
+      }
+    },
+    "Den": {
+      "7": { "steps": ["Tag Waypoint (left of entrance warp)", "Go to Ashen Fields (top/right exit)"] }
+    },
+    "Fortress Encampment": {
+      "7": { "steps": ["Kill Greust (inside arena)", "Go to Northern Forest (top exit of arena)"] }
+    },
+    "Dread Thicket": {
+      "7": {
+        "steps": [
+          "Collect 7 Fireflies (scattered throughout thicket)",
+          "Go to Den of Despair (centre of zone)",
+          "Kill Gruthkul (inside Den of Despair)",
+          "TP to Town"
+        ]
+      }
+    },
+    "Causeway": {
+      "7": {
+        "steps": [
+          "Tag Waypoint (end of area, follow road)",
+          "Take Kishara's Star from Kishara's Lockbox (end of causeway, near WP)",
+          "TP to Town — talk to Weylam for skill point",
+          "Return through portal → Go to Vaal City (exit past WP)"
+        ]
+      }
+    },
+    "Vaal City": {
+      "7": {
+        "steps": [
+          "Tag Waypoint (middle of zone, follow main path)",
+          "Talk to Yeena (near WP area)",
+          "Go to Temple of Decay Level 1 (far end of city)"
+        ]
+      }
+    },
+    "Temple of Decay Level 1": {
+      "7": { "steps": ["Go to Temple of Decay Level 2 (stairs down, far end)"] }
+    },
+    "Temple of Decay Level 2": {
+      "7": { "steps": ["Kill Arakaali (boss chamber, far end)", "Go to Act VIII"] }
+    },
+    "Maligaro's Sanctum": {
+      "7": {
+        "steps": [
+          "Kill Maligaro (final chamber, far end)",
+          "Take Black Venom",
+          "TP to Chamber of Sins"
+        ]
+      }
+    },
+
+    "Sarn Ramparts": {
+      "8": { "steps": ["Go to Sarn Encampment (town, follow rampart path)"] }
+    },
+    "Toxic Conduits": {
+      "8": {
+        "steps": [
+          "Open Loose Gate (end of conduit path)",
+          "Go to Doedre's Cesspool (through gate)",
+          "Later: Go to Quay (up/right from WP, after Cesspool)"
+        ]
+      }
+    },
+    "Doedre's Cesspool": {
+      "8": {
+        "steps": [
+          "Enter Cauldron (centre of cesspool)",
+          "Activate Valve (inside Cauldron)",
+          "Kill Doedre (Cauldron boss room)",
+          "Tag Waypoint (near exit, after boss)",
+          "Go to Grand Promenade (down/left from WP)"
+        ]
+      }
+    },
+    "Grand Promenade": {
+      "8": { "steps": ["Go to Bath House (follow right-hand fence to entrance)"] }
+    },
+    "Bath House": {
+      "8": {
+        "steps": [
+          "Tag Waypoint (main bath hall, follow path from entrance)",
+          "Once per league: Solve Trial (top or left side room)",
+          "Go to High Gardens (top or left exit)"
+        ]
+      }
+    },
+    "High Gardens": {
+      "8": {
+        "steps": [
+          "Go to Pools of Terror (right side of gardens)",
+          "Kill Yugul (Pools of Terror, boss chamber)",
+          "TP to Town"
+        ]
+      }
+    },
+    "Lunaris Concourse": {
+      "8": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Go to Lunaris Temple (top exit)",
+          "Later: Go to Harbour Bridge (down/right exit)"
+        ]
+      }
+    },
+    "Quay": {
+      "8": {
+        "steps": [
+          "Take Ankh of Eternity (down, near entrance)",
+          "Enter Resurrection Site (down/left of quay)",
+          "Kill Tolman, talk to Clarissa (inside Resurrection Site)",
+          "Go to Grain Gate (up/right exit)"
+        ]
+      }
+    },
+    "Grain Gate": {
+      "8": {
+        "steps": [
+          "Tag Waypoint (left of gate entrance)",
+          "Kill Gemling Legion (gate area)",
+          "Go to Imperial Fields (through gate)"
+        ]
+      }
+    },
+    "Imperial Fields": {
+      "8": {
+        "steps": [
+          "Tag Waypoint (follow road up from entrance)",
+          "Go to Solaris Temple (follow road further up, top exit)"
+        ]
+      }
+    },
+    "Harbour Bridge": {
+      "8": {
+        "steps": [
+          "Enter Sky Shrine (middle of bridge)",
+          "Activate Statue of the Sisters (inside Sky Shrine)",
+          "Kill Lunaris and Solaris (shrine boss chamber)",
+          "Go to Act IX"
+        ]
+      }
+    },
+
+    "Blood Aqueduct": {
+      "9": { "steps": ["Enter Highgate (town, follow aqueduct)"] }
+    },
+    "Descent": {
+      "9": { "steps": ["Go down Supply Hoist (twice, straight ahead)", "Go to Vastiri Desert (bottom exit)"] }
+    },
+    "Vastiri Desert": {
+      "9": {
+        "steps": [
+          "Tag Waypoint (mid-zone, follow main path from entrance)",
+          "Open Storm-Weathered Chest, kill monsters, pick up Storm Blade (mid-zone, near main path)",
+          "TP to Town — get Bottled Storm",
+          "Go to Oasis (down from WP, then right)",
+          "Later: Go to Foothills (up/left from WP)"
+        ]
+      }
+    },
+    "Oasis": {
+      "9": {
+        "steps": [
+          "Enter Sand Pit (centre of Oasis)",
+          "Kill Shakari (inside Sand Pit)",
+          "TP to Town — WP to Vastiri Desert"
+        ]
+      }
+    },
+    "Foothills": {
+      "9": {
+        "steps": [
+          "Tag Waypoint (top of zone, follow path up)",
+          "Go to Boiling Lake (up/right from WP)",
+          "Later: Go to Tunnel (top/left from WP)"
+        ]
+      }
+    },
+    "Boiling Lake": {
+      "9": {
+        "steps": [
+          "Kill Basilisk (centre of lake)",
+          "Take Basilisk Acid",
+          "TP to Town — WP to Foothills"
+        ]
+      }
+    },
+    "Tunnel": {
+      "9": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Once per league: Solve Trial (side room, before the WP)",
+          "Go to Quarry (far end of tunnel)"
+        ]
+      }
+    },
+    "Quarry": {
+      "9": {
+        "steps": [
+          "Tag Waypoint (left of entrance warp)",
+          "Go to Shrine of the Winds (upper area of quarry)",
+          "Kill Garukhan and Kira (inside Shrine of the Winds)",
+          "Take Sekhema Feather",
+          "Go to Refinery (top exit, same direction as Shrine)"
+        ]
+      }
+    },
+    "Refinery": {
+      "9": {
+        "steps": [
+          "Kill General Adus (inside refinery, far end)",
+          "Take Trarthan Powder",
+          "TP to Town, talk to NPCs",
+          "WP to Quarry — talk to Sin (near WP)",
+          "Go to Belly of the Beast (portal opens)"
+        ]
+      }
+    },
+    "Rotting Core": {
+      "9": {
+        "steps": [
+          "Enter Black Core (centre of zone)",
+          "Talk to Sin (near entrance)",
+          "Kill Doedre, Maligaro, Shavronne in portals (three separate portals inside Black Core)",
+          "Kill Depraved Trinity (all three merge, same chamber)",
+          "Sail to Act X"
+        ]
+      }
+    },
+
+    "Oriath Docks": {
+      "10": { "steps": ["Go to Cathedral Rooftop (follow docks path up)"] }
+    },
+    "Ravaged Square": {
+      "10": {
+        "steps": [
+          "Tag Waypoint (right/up from entrance)",
+          "Go to Torched Courts (right from WP)",
+          "Once per league: Go to Ossuary (next to WP) → Bone Pits, Solve Trial",
+          "Talk to Innocence (right from WP)",
+          "Go to Control Blocks (down exit from square)"
+        ]
+      }
+    },
+    "Desecrated Chambers": {
+      "10": {
+        "steps": [
+          "Tag Waypoint (right of entrance warp)",
+          "Go to Sanctum of Innocence (leftmost corridor, then right)"
+        ]
+      }
+    },
+    "Canals": {
+      "10": { "steps": ["Follow canal (straight path)", "Go to Feeding Trough (end of canal)"] }
+    },
+    "The Feeding Trough": {
+      "10": { "steps": ["Go to Altar of Hunger (top exit)"] }
+    },
+    "Altar of Hunger": {
+      "10": {
+        "steps": [
+          "Kill Kitava (main altar, centre of zone)",
+          "Go to Oriath Docks (exit)",
+          "Talk to Lani for skill point",
+          "WARNING: -60% all resistances after this kill"
+        ]
+      }
+    }
+  }
+}
