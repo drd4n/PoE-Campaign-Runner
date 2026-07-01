@@ -84,6 +84,18 @@ class OverlayWindow(QWidget):
         path.addRoundedRect(QRectF(self.rect()), 8, 8)
         painter.fillPath(path, _BG)
 
+    def show_status(self, message: str) -> None:
+        """Show a plain status message (startup / waiting), so the overlay is
+        visible immediately and the player knows it's running."""
+        self._button_container.hide()
+        self._steps_label.hide()
+        self._act_label.setText("PoE Campaign Overlay")
+        self._zone_label.setText(message)
+        self._set_interactive(False)
+        self.adjustSize()
+        self._snap_top_right()
+        self.show()
+
     def show_zone(self, zone_name: str, steps: list[str], act: int) -> None:
         self._button_container.hide()
         self._steps_label.show()

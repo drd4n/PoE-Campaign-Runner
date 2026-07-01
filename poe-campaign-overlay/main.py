@@ -3,8 +3,11 @@ from PyQt6.QtWidgets import QApplication, QFileDialog, QMessageBox
 
 from config import find_client_log, save_client_log_path
 from zone_data import ZoneTracker
-from log_watcher import LogWatcher
+from log_watcher import LogWatcher, read_last_zone
+from logutil import LOG_FILE, get_logger
 from overlay import OverlayWindow
+
+log = get_logger()
 
 
 def pick_log_file(app: QApplication) -> str | None:
@@ -18,12 +21,17 @@ def pick_log_file(app: QApplication) -> str | None:
 
 
 def main() -> None:
+    log.info("=" * 48)
+    log.info("PoE Campaign Overlay starting up")
+    log.info("Log file: %s", LOG_FILE)
+
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
 
     log_path = find_client_log()
 
     if not log_path:
+        log.info("Opening file picker for manual Client.txt selection.")
         QMessageBox.information(
             None,
             "PoE Campaign Overlay",
@@ -32,12 +40,14 @@ def main() -> None:
         log_path = pick_log_file(app)
 
     if not log_path:
+        log.warning("No Client.txt selected — exiting.")
         sys.exit(0)
 
     save_client_log_path(log_path)
 
     tracker = ZoneTracker()
     overlay = OverlayWindow()
+    log.info("Overlay window created.")
 
     # Holds the zone name while waiting for the player to pick an act
     pending_zone: list[str | None] = [None]
@@ -46,18 +56,22 @@ def main() -> None:
         steps = tracker.enter_zone(zone_name)
         if steps is not None:
             pending_zone[0] = None
+            log.info("Showing guide for '%s' (Act %d).", zone_name, tracker.current_act)
             overlay.show_zone(zone_name, steps, tracker.current_act)
             return
 
         possible_acts = tracker.get_possible_acts(zone_name)
         if possible_acts:
             pending_zone[0] = zone_name
+            log.info("Zone '%s' is ambiguous — asking for act %s.", zone_name, possible_acts)
             overlay.show_act_selection(zone_name, possible_acts)
         else:
             pending_zone[0] = None
+            log.info("Zone '%s' not in zone data — hiding overlay.", zone_name)
             overlay.hide_zone()
 
     def on_act_selected(act: int) -> None:
+        log.info("Player selected Act %d.", act)
         tracker.set_act(act)
         zone = pending_zone[0]
         pending_zone[0] = None
@@ -69,10 +83,27 @@ def main() -> None:
                 overlay.hide_zone()
 
     overlay.act_selected.connect(on_act_selected)
+
+    # Show immediately so the player has visual confirmation the overlay is live,
+    # then try to pick up whatever zone they're already standing in.
+    overlay.show_status("Watching Client.txt…\nZone in to begin.")
+    log.info("Overlay shown (top-right). Waiting for zone changes.")
+
+    last_zone = read_last_zone(log_path)
+    if last_zone and tracker.get_possible_acts(last_zone):
+        # Only take over the status message if the zone is one we can guide.
+        log.info("Cold start — current zone: %s", last_zone)
+        on_zone_changed(last_zone)
+    elif last_zone:
+        log.info("Cold start — current zone '%s' not in zone data; waiting.", last_zone)
+    else:
+        log.info("Cold start — no prior zone found in log; waiting for first zone change.")
+
     watcher = LogWatcher(log_path)
     watcher.zone_changed.connect(on_zone_changed)
     watcher.start()
 
+    log.info("Startup complete — entering event loop.")
     sys.exit(app.exec())
 
 
