@@ -18,8 +18,23 @@ class ZoneTracker:
         self.current_act: int = 0
 
     def enter_zone(self, zone_name: str) -> list[str] | None:
-        """Update act tracking and return steps for this zone, or None if unknown."""
+        """Update act tracking and return steps, or None if act is ambiguous/unknown."""
         self._update_act(zone_name)
+        return self._resolve_steps(zone_name)
+
+    def get_possible_acts(self, zone_name: str) -> list[int]:
+        """Return all acts this zone appears in (empty list = unknown zone)."""
+        zone = self._zones.get(zone_name)
+        if not zone:
+            return []
+        return sorted(int(k) for k in zone.keys())
+
+    def set_act(self, act: int) -> None:
+        """Explicitly set the current act (called after player selects from UI)."""
+        self.current_act = act
+
+    def resolve_current(self, zone_name: str) -> list[str] | None:
+        """Resolve steps for zone_name using the current act (no act update)."""
         return self._resolve_steps(zone_name)
 
     def _update_act(self, zone_name: str) -> None:

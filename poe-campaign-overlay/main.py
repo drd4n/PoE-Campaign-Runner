@@ -39,15 +39,37 @@ def main() -> None:
     tracker = ZoneTracker()
     overlay = OverlayWindow()
 
-    watcher = LogWatcher(log_path)
+    # Holds the zone name while waiting for the player to pick an act
+    pending_zone: list[str | None] = [None]
 
     def on_zone_changed(zone_name: str) -> None:
         steps = tracker.enter_zone(zone_name)
-        if steps:
+        if steps is not None:
+            pending_zone[0] = None
             overlay.show_zone(zone_name, steps, tracker.current_act)
+            return
+
+        possible_acts = tracker.get_possible_acts(zone_name)
+        if possible_acts:
+            pending_zone[0] = zone_name
+            overlay.show_act_selection(zone_name, possible_acts)
         else:
+            pending_zone[0] = None
             overlay.hide_zone()
 
+    def on_act_selected(act: int) -> None:
+        tracker.set_act(act)
+        zone = pending_zone[0]
+        pending_zone[0] = None
+        if zone:
+            steps = tracker.resolve_current(zone)
+            if steps:
+                overlay.show_zone(zone, steps, tracker.current_act)
+            else:
+                overlay.hide_zone()
+
+    overlay.act_selected.connect(on_act_selected)
+    watcher = LogWatcher(log_path)
     watcher.zone_changed.connect(on_zone_changed)
     watcher.start()
 

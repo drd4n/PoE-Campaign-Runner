@@ -108,5 +108,56 @@ def run():
         print(f"\033[92mAll tests passed.\033[0m")
 
 
+def run_act_selection():
+    """
+    Simulate the act-selection UI flow:
+    player enters an ambiguous zone → get_possible_acts → set_act → resolve_current.
+    """
+    print("\n--- Act-selection tests ---")
+    failures = 0
+
+    cases = [
+        # (first zone, player_picks, expected_act_after, expect_steps)
+        # Ambiguous zones — enter_zone returns None, player must pick
+        ("Lioneye's Watch", 1, 1, True),
+        ("Lioneye's Watch", 6, 6, True),
+        ("The Coast",       6, 6, True),
+        ("Crossroads",      7, 7, True),
+        # Milestone zones — enter_zone resolves immediately, no selection needed
+        ("City of Sarn",    None, 3, True),
+        ("Twilight Strand",  None, 1, True),
+    ]
+
+    for zone_name, player_picks, expected_act, expect_steps in cases:
+        tracker = ZoneTracker()  # fresh (current_act=0)
+
+        steps = tracker.enter_zone(zone_name)
+        needs_selection = steps is None and bool(tracker.get_possible_acts(zone_name))
+
+        if needs_selection:
+            # Simulate player clicking a button in the overlay
+            tracker.set_act(player_picks)
+            steps = tracker.resolve_current(zone_name)
+
+        selection_ok = needs_selection == (player_picks is not None)
+        act_ok = tracker.current_act == expected_act
+        steps_ok = (steps is not None) == expect_steps
+        ok = selection_ok and act_ok and steps_ok
+
+        status = PASS if ok else FAIL
+        if not ok:
+            failures += 1
+
+        picked_str = f"→ picked Act {player_picks}" if player_picks else "→ resolved directly"
+        print(f"{status}  {zone_name:<35} act={tracker.current_act} (expected {expected_act}) {picked_str}")
+
+    if failures:
+        print(f"\033[91m{failures} act-selection test(s) failed.\033[0m")
+    else:
+        print(f"\033[92mAll act-selection tests passed.\033[0m")
+    return failures
+
+
 if __name__ == "__main__":
     run()
+    exit(run_act_selection())
