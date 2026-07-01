@@ -131,9 +131,17 @@ class OverlayWindow(QWidget):
         self._snap_top_right()
         self.show()
 
-    def hide_zone(self) -> None:
+    def show_no_data(self, zone_name: str) -> None:
+        """Show the zone with a 'no data' note instead of hiding the overlay."""
+        self._button_container.hide()
+        self._steps_label.show()
+        self._act_label.setText("")
+        self._zone_label.setText(f"◆  {zone_name}")
+        self._steps_label.setText("  • No data for this zone")
         self._set_interactive(False)
-        self.hide()
+        self.adjustSize()
+        self._snap_top_right()
+        self.show()
 
     def _set_interactive(self, interactive: bool) -> None:
         self.setWindowFlag(Qt.WindowType.WindowTransparentForInput, not interactive)

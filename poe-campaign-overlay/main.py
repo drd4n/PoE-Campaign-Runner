@@ -67,8 +67,8 @@ def main() -> None:
             overlay.show_act_selection(zone_name, possible_acts)
         else:
             pending_zone[0] = None
-            log.info("Zone '%s' not in zone data — hiding overlay.", zone_name)
-            overlay.hide_zone()
+            log.info("Zone '%s' not in zone data — showing 'no data'.", zone_name)
+            overlay.show_no_data(zone_name)
 
     def on_act_selected(act: int) -> None:
         log.info("Player selected Act %d.", act)
@@ -80,7 +80,8 @@ def main() -> None:
             if steps:
                 overlay.show_zone(zone, steps, tracker.current_act)
             else:
-                overlay.hide_zone()
+                log.info("No data for '%s' in Act %d — showing 'no data'.", zone, act)
+                overlay.show_no_data(zone)
 
     overlay.act_selected.connect(on_act_selected)
 
@@ -90,12 +91,9 @@ def main() -> None:
     log.info("Overlay shown (top-right). Waiting for zone changes.")
 
     last_zone = read_last_zone(log_path)
-    if last_zone and tracker.get_possible_acts(last_zone):
-        # Only take over the status message if the zone is one we can guide.
+    if last_zone:
         log.info("Cold start — current zone: %s", last_zone)
         on_zone_changed(last_zone)
-    elif last_zone:
-        log.info("Cold start — current zone '%s' not in zone data; waiting.", last_zone)
     else:
         log.info("Cold start — no prior zone found in log; waiting for first zone change.")
 
