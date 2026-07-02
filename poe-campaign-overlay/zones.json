@@ -1,18 +1,18 @@
 {
   "milestones": {
-    "Twilight Strand": 1,
-    "Southern Forest": 2,
-    "City of Sarn": 3,
-    "Aqueduct": 4,
-    "Slave Pens": 5,
+    "The Twilight Strand": 1,
+    "The Southern Forest": 2,
+    "The City of Sarn": 3,
+    "The Aqueduct": 4,
+    "The Slave Pens": 5,
     "The Bridge Encampment": 7,
-    "Sarn Ramparts": 8,
-    "Blood Aqueduct": 9,
+    "The Sarn Ramparts": 8,
+    "The Blood Aqueduct": 9,
     "Oriath Docks": 10
   },
 
   "zones": {
-    "Twilight Strand": {
+    "The Twilight Strand": {
       "1": { "steps": ["Kill Hillock (far end of beach)", "Go to Town"] }
     },
     "Lioneye's Watch": {
@@ -38,11 +38,11 @@
         ]
       }
     },
-    "Tidal Island": {
+    "The Tidal Island": {
       "1": { "steps": ["Kill Hailrake (far end of island)", "Get Medicine Chest", "TP to Town"] },
       "6": { "steps": ["Get Bestel's Manuscript (far end of island)", "TP to Town"] }
     },
-    "Mud Flats": {
+    "The Mud Flats": {
       "1": {
         "steps": [
           "Get Roseus Glyph, Ammonite Glyph, Haliotis Glyph from Rhoa Nests (scattered across zone)",
@@ -58,10 +58,10 @@
         ]
       }
     },
-    "Submerged Passage": {
+    "The Submerged Passage": {
       "1": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Flooded Depths (side branch off main path)", "Then go to The Ledge (far end)"] }
     },
-    "Flooded Depths": {
+    "The Flooded Depths": {
       "1": { "steps": ["Kill Dweller of the Deep (centre of cave)", "TP to Town"] }
     },
     "The Ledge": {
@@ -70,14 +70,14 @@
     "The Climb": {
       "1": { "steps": ["Enter Lower Prison (top of zone)"] }
     },
-    "Lower Prison": {
+    "The Lower Prison": {
       "1": { "steps": ["Tag Waypoint (follow main corridor from entrance)", "Once per league: Complete Trial (side room off corridor)", "Go to Upper Prison (far end)"] },
       "6": { "steps": ["Tag Waypoint (left of entrance warp)", "Once per league: Solve Trial (side room)", "Go to Shavronne's Tower (far end)"] }
     },
-    "Upper Prison": {
+    "The Upper Prison": {
       "1": { "steps": ["Enter Warden's Quarters (top of floor)", "Follow blood trail to Warden's Chambers"] }
     },
-    "Warden's Chambers": {
+    "The Warden's Chambers": {
       "1": { "steps": ["Kill Brutus (main chamber, far end)", "Go to Prisoner's Gate", "Tag WP (near entry)", "TP to Town"] }
     },
     "Prisoner's Gate": {
@@ -92,7 +92,7 @@
         ]
       }
     },
-    "Ship Graveyard": {
+    "The Ship Graveyard": {
       "1": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -103,13 +103,13 @@
         ]
       }
     },
-    "Ship Graveyard Cave": {
+    "The Ship Graveyard Cave": {
       "1": { "steps": ["Pick up Allflame (chest inside)", "Exit cave", "Kill Fairgraves (outside near cave exit)", "TP to Town"] }
     },
-    "Cavern of Wrath": {
+    "The Cavern of Wrath": {
       "1": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Cavern of Anger (follow cave path)", "Enter Merveil's Lair (far end)"] }
     },
-    "Cavern of Anger": {
+    "The Cavern of Anger": {
       "1": { "steps": ["Enter Merveil's Lair (far end of cavern)"] },
       "6": { "steps": ["Take The Black Flag from chest (near entrance)", "Go to Beacon (follow cave path out)"] }
     },
@@ -117,14 +117,14 @@
       "1": { "steps": ["Kill Merveil (first chamber)", "Kill Merveil the Twisted (second chamber)", "Go to Act II"] }
     },
 
-    "Southern Forest": {
+    "The Southern Forest": {
       "2": { "steps": ["Enter The Forest Encampment (town, follow road)", "Go to Old Fields (top-right exit)"] },
       "6": { "steps": ["Tag Waypoint (end of area, follow road)", "Go to Cavern of Anger (near WP)"] }
     },
     "The Forest Encampment": {
       "2": { "steps": ["Talk to NPCs", "Go to Old Fields (top-right exit)"] }
     },
-    "Old Fields": {
+    "The Old Fields": {
       "2": {
         "steps": [
           "Enter The Den (optional, side path) — kill Great White Beast for Quicksilver Flask",
@@ -132,7 +132,7 @@
         ]
       }
     },
-    "Crossroads": {
+    "The Crossroads": {
       "2": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -149,7 +149,7 @@
         ]
       }
     },
-    "Chamber of Sins Level 1": {
+    "The Chamber of Sins Level 1": {
       "2": { "steps": ["Tag Waypoint (centre of zone)", "Go to Chamber of Sins Level 2 (stairs down)"] },
       "7": {
         "steps": [
@@ -161,7 +161,7 @@
         ]
       }
     },
-    "Chamber of Sins Level 2": {
+    "The Chamber of Sins Level 2": {
       "2": {
         "steps": [
           "Once per league: Solve Trial (side room)",
@@ -178,7 +178,7 @@
         ]
       }
     },
-    "Broken Bridge": {
+    "The Broken Bridge": {
       "2": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -189,11 +189,11 @@
       },
       "7": { "steps": ["Go to Crossroads (follow road/left)"] }
     },
-    "Fellshrine Ruins": {
+    "The Fellshrine Ruins": {
       "2": { "steps": ["Go to Crypt Level 1 (ruins entrance, follow path)"] },
       "7": { "steps": ["Go to Crypt (follow road then right into ruins)"] }
     },
-    "Crypt Level 1": {
+    "The Crypt Level 1": {
       "2": { "steps": ["Once per league: Solve Trial (side room)", "Go to Crypt Level 2 (stairs down)"] },
       "7": {
         "steps": [
@@ -204,11 +204,11 @@
         ]
       }
     },
-    "Crypt Level 2": {
+    "The Crypt Level 2": {
       "2": { "steps": ["Take Golden Hand (main chamber)", "TP to Town — talk to Yeena for skill point"] },
       "7": { "steps": ["Take Maligaro's Map (main chamber)", "TP to Town"] }
     },
-    "Riverways": {
+    "The Riverways": {
       "2": {
         "steps": [
           "Tag Waypoint (follow broken road from entrance)",
@@ -218,7 +218,7 @@
       },
       "7": { "steps": ["Tag Waypoint (follow broken road from entrance)", "Go to Wetlands (up/left exit)"] }
     },
-    "Western Forest": {
+    "The Western Forest": {
       "2": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -232,7 +232,7 @@
       "6": { "steps": ["Tag Waypoint (follow road from entrance)", "Go to Riverways (exit, follow road)"] },
       "7": { "steps": ["Tag Waypoint (follow road from entrance)", "Go to Riverways (exit, follow road)"] }
     },
-    "Weaver's Chambers": {
+    "The Weaver's Chambers": {
       "2": {
         "steps": [
           "Enter Weaver's Nest (centre of chambers)",
@@ -242,7 +242,7 @@
         ]
       }
     },
-    "Wetlands": {
+    "The Wetlands": {
       "2": {
         "steps": [
           "Kill or Save Oak (centre of wetlands)",
@@ -268,10 +268,10 @@
         ]
       }
     },
-    "Vaal Ruins": {
+    "The Vaal Ruins": {
       "2": { "steps": ["Activate Ancient Seal (centre of ruins)", "Go to Northern Forest (top exit)"] }
     },
-    "Northern Forest": {
+    "The Northern Forest": {
       "2": {
         "steps": [
           "Tag Waypoint (top of zone, follow path)",
@@ -287,14 +287,14 @@
         ]
       }
     },
-    "Caverns": {
+    "The Caverns": {
       "2": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Ancient Pyramid (far end) — enter Pyramid Apex"] }
     },
     "Pyramid Apex": {
       "2": { "steps": ["Activate Dark Altar (centre of apex)", "Kill Vaal Oversoul (main chamber)", "Go to Act II transition"] }
     },
 
-    "City of Sarn": {
+    "The City of Sarn": {
       "3": {
         "steps": [
           "Tag Waypoint (follow path from entrance arch)",
@@ -304,14 +304,14 @@
         ]
       }
     },
-    "Sarn Encampment": {
+    "The Sarn Encampment": {
       "3": { "steps": ["Talk to NPCs", "Go to Slums (top-right exit)"] },
       "8": { "steps": ["Talk to NPCs", "Go to Toxic Conduits (left exit)"] }
     },
-    "Slums": {
+    "The Slums": {
       "3": { "steps": ["Go to Crematorium (left exit, follow slums path)", "Later: open Sewer Grating (top of slums, with Sewer Keys)"] }
     },
-    "Crematorium": {
+    "The Crematorium": {
       "3": {
         "steps": [
           "Tag Waypoint (main hall, follow corridor in)",
@@ -322,7 +322,7 @@
         ]
       }
     },
-    "Sewers": {
+    "The Sewers": {
       "3": {
         "steps": [
           "Take Bust of Gaius Sentari (near entrance, first area)",
@@ -333,7 +333,7 @@
         ]
       }
     },
-    "Marketplace": {
+    "The Marketplace": {
       "3": {
         "steps": [
           "Tag Waypoint (near entrance from Sewers)",
@@ -343,7 +343,7 @@
         ]
       }
     },
-    "Battlefront": {
+    "The Battlefront": {
       "3": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -353,7 +353,7 @@
         ]
       }
     },
-    "Docks": {
+    "The Docks": {
       "3": {
         "steps": [
           "Tag Waypoint (follow dock road, near Fairgraves)",
@@ -362,11 +362,11 @@
         ]
       }
     },
-    "Solaris Temple Level 1": {
+    "The Solaris Temple Level 1": {
       "3": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Solaris Temple Level 2 (stairs up)"] },
       "8": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Solaris Temple Level 2 (up from WP)"] }
     },
-    "Solaris Temple Level 2": {
+    "The Solaris Temple Level 2": {
       "3": {
         "steps": [
           "Tag Waypoint (left of entrance warp)",
@@ -382,7 +382,7 @@
         ]
       }
     },
-    "Ebony Barracks": {
+    "The Ebony Barracks": {
       "3": {
         "steps": [
           "Tag Waypoint (left of entrance gate)",
@@ -391,11 +391,11 @@
         ]
       }
     },
-    "Lunaris Temple Level 1": {
+    "The Lunaris Temple Level 1": {
       "3": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Lunaris Temple Level 2 (stairs down)"] },
       "8": { "steps": ["Tag Waypoint (right of entrance warp)", "Go to Lunaris Temple Level 2 (stairs down)"] }
     },
-    "Lunaris Temple Level 2": {
+    "The Lunaris Temple Level 2": {
       "3": {
         "steps": [
           "Kill Piety (boss chamber, far end)",
@@ -411,7 +411,7 @@
         ]
       }
     },
-    "Imperial Gardens": {
+    "The Imperial Gardens": {
       "3": {
         "steps": [
           "Tag Waypoint (follow main garden path from entrance)",
@@ -421,7 +421,7 @@
         ]
       }
     },
-    "Sceptre of God": {
+    "The Sceptre of God": {
       "3": {
         "steps": [
           "Tag Waypoint (bottom floor, near entrance)",
@@ -429,18 +429,18 @@
         ]
       }
     },
-    "Upper Sceptre of God": {
+    "The Upper Sceptre of God": {
       "3": { "steps": ["Kill Dominus (top of tower, first form)", "Kill Dominus, Ascendant (second form, same room)", "Go to Act IV"] }
     },
 
-    "Aqueduct": {
+    "The Aqueduct": {
       "4": { "steps": ["Tag Waypoint (next to entrance warp)", "Go to Town (Highgate, follow aqueduct path)"] }
     },
     "Highgate": {
       "4": { "steps": ["Talk to NPCs", "Go to Dried Lake (bottom-left exit)"] },
       "9": { "steps": ["Talk to NPCs", "Go to Descent (top-right exit)"] }
     },
-    "Dried Lake": {
+    "The Dried Lake": {
       "4": {
         "steps": [
           "Kill Voll (far end of lake)",
@@ -449,13 +449,13 @@
         ]
       }
     },
-    "Mines Level 1": {
+    "The Mines Level 1": {
       "4": { "steps": ["Go to Mines Level 2 (follow mine shaft down)"] }
     },
-    "Mines Level 2": {
+    "The Mines Level 2": {
       "4": { "steps": ["Tag Deshret's Spirit (mid-zone)", "Enter Crystal Veins (far end)"] }
     },
-    "Crystal Veins": {
+    "The Crystal Veins": {
       "4": {
         "steps": [
           "Tag Waypoint (centre of cave, follow path from entrance)",
@@ -487,7 +487,7 @@
         ]
       }
     },
-    "Grand Arena": {
+    "The Grand Arena": {
       "4": {
         "steps": [
           "Tag Waypoint (top-left of arena entrance)",
@@ -499,11 +499,11 @@
         ]
       }
     },
-    "Belly of the Beast Level 1": {
+    "The Belly of the Beast Level 1": {
       "4": { "steps": ["Go to Belly of the Beast Level 2 (follow path down)"] },
       "9": { "steps": ["Enter Rotting Core (far end)"] }
     },
-    "Belly of the Beast Level 2": {
+    "The Belly of the Beast Level 2": {
       "4": {
         "steps": [
           "Enter The Bowels of the Beast (far end)",
@@ -512,7 +512,7 @@
         ]
       }
     },
-    "Harvest": {
+    "The Harvest": {
       "4": {
         "steps": [
           "Tag Waypoint (right of entrance warp)",
@@ -526,11 +526,11 @@
         ]
       }
     },
-    "Ascent": {
+    "The Ascent": {
       "4": { "steps": ["Walk to summit (follow path up)", "Activate Lever (top of ascent)", "Go to Act V"] }
     },
 
-    "Slave Pens": {
+    "The Slave Pens": {
       "5": {
         "steps": [
           "Tag Waypoint (left of entrance warp)",
@@ -542,7 +542,7 @@
     "Overseer's Tower": {
       "5": { "steps": ["Talk to NPCs", "Go to Control Blocks (exit)"] }
     },
-    "Control Blocks": {
+    "The Control Blocks": {
       "5": {
         "steps": [
           "Pick up Miasmeter (down/left from entrance)",
@@ -568,7 +568,7 @@
         ]
       }
     },
-    "Templar Courts": {
+    "The Templar Courts": {
       "5": { "steps": ["Tag Waypoint (main courtyard, follow road from entrance)", "Go to Chamber of Innocence (far end of courts)"] }
     },
     "The Chamber of Innocence": {
@@ -595,11 +595,11 @@
         ]
       }
     },
-    "Torched Courts": {
+    "The Torched Courts": {
       "5": { "steps": ["Go to Ruined Square (exit through burned courts)"] },
       "10": { "steps": ["Go to Desecrated Chambers (exit)"] }
     },
-    "Ruined Square": {
+    "The Ruined Square": {
       "5": {
         "steps": [
           "Tag Waypoint (top-left of zone)",
@@ -619,10 +619,10 @@
         ]
       }
     },
-    "Ossuary": {
+    "The Ossuary": {
       "5": { "steps": ["Click Tomb (centre of ossuary)", "Pick up Sign of Purity", "TP to Town"] }
     },
-    "Reliquary": {
+    "The Reliquary": {
       "5": {
         "steps": [
           "Tag Waypoint (left of entrance warp)",
@@ -634,7 +634,7 @@
         ]
       }
     },
-    "Cathedral Rooftop": {
+    "The Cathedral Rooftop": {
       "5": { "steps": ["Go to Cathedral Apex (left side of rooftop)"] },
       "10": {
         "steps": [
@@ -648,7 +648,7 @@
       "5": { "steps": ["Activate Cradle of Purity (centre of apex)", "Kill Kitava (main chamber)", "Sail to Act VI"] }
     },
 
-    "Karui Fortress": {
+    "The Karui Fortress": {
       "6": {
         "steps": [
           "Enter Tukohama's Keep (front gate)",
@@ -657,7 +657,7 @@
         ]
       }
     },
-    "Ridge": {
+    "The Ridge": {
       "6": { "steps": ["Tag Waypoint (follow ridge path from entrance)", "Go to Lower Prison (far end of ridge)"] }
     },
     "Shavronne's Tower": {
@@ -669,7 +669,7 @@
         ]
       }
     },
-    "Beacon": {
+    "The Beacon": {
       "6": {
         "steps": [
           "Tag Waypoint (near beacon structure, bottom of zone)",
@@ -679,7 +679,7 @@
         ]
       }
     },
-    "Brine King's Reef": {
+    "The Brine King's Reef": {
       "6": {
         "steps": [
           "Tag Waypoint (right of entrance warp)",
@@ -693,7 +693,7 @@
     "The Bridge Encampment": {
       "7": { "steps": ["Talk to NPCs", "Go to Broken Bridge (exit)"] }
     },
-    "Ashen Fields": {
+    "The Ashen Fields": {
       "7": {
         "steps": [
           "Tag Waypoint (follow road from entrance)",
@@ -701,13 +701,13 @@
         ]
       }
     },
-    "Den": {
+    "The Den": {
       "7": { "steps": ["Tag Waypoint (left of entrance warp)", "Go to Ashen Fields (top/right exit)"] }
     },
     "Fortress Encampment": {
       "7": { "steps": ["Kill Greust (inside arena)", "Go to Northern Forest (top exit of arena)"] }
     },
-    "Dread Thicket": {
+    "The Dread Thicket": {
       "7": {
         "steps": [
           "Collect 7 Fireflies (scattered throughout thicket)",
@@ -717,7 +717,7 @@
         ]
       }
     },
-    "Causeway": {
+    "The Causeway": {
       "7": {
         "steps": [
           "Tag Waypoint (end of area, follow road)",
@@ -727,7 +727,7 @@
         ]
       }
     },
-    "Vaal City": {
+    "The Vaal City": {
       "7": {
         "steps": [
           "Tag Waypoint (middle of zone, follow main path)",
@@ -736,10 +736,10 @@
         ]
       }
     },
-    "Temple of Decay Level 1": {
+    "The Temple of Decay Level 1": {
       "7": { "steps": ["Go to Temple of Decay Level 2 (stairs down, far end)"] }
     },
-    "Temple of Decay Level 2": {
+    "The Temple of Decay Level 2": {
       "7": { "steps": ["Kill Arakaali (boss chamber, far end)", "Go to Act VIII"] }
     },
     "Maligaro's Sanctum": {
@@ -752,10 +752,10 @@
       }
     },
 
-    "Sarn Ramparts": {
+    "The Sarn Ramparts": {
       "8": { "steps": ["Go to Sarn Encampment (town, follow rampart path)"] }
     },
-    "Toxic Conduits": {
+    "The Toxic Conduits": {
       "8": {
         "steps": [
           "Open Loose Gate (end of conduit path)",
@@ -775,10 +775,10 @@
         ]
       }
     },
-    "Grand Promenade": {
+    "The Grand Promenade": {
       "8": { "steps": ["Go to Bath House (follow right-hand fence to entrance)"] }
     },
-    "Bath House": {
+    "The Bath House": {
       "8": {
         "steps": [
           "Tag Waypoint (main bath hall, follow path from entrance)",
@@ -787,7 +787,7 @@
         ]
       }
     },
-    "High Gardens": {
+    "The High Gardens": {
       "8": {
         "steps": [
           "Go to Pools of Terror (right side of gardens)",
@@ -796,7 +796,7 @@
         ]
       }
     },
-    "Lunaris Concourse": {
+    "The Lunaris Concourse": {
       "8": {
         "steps": [
           "Tag Waypoint (right of entrance warp)",
@@ -805,7 +805,7 @@
         ]
       }
     },
-    "Quay": {
+    "The Quay": {
       "8": {
         "steps": [
           "Take Ankh of Eternity (down, near entrance)",
@@ -815,7 +815,7 @@
         ]
       }
     },
-    "Grain Gate": {
+    "The Grain Gate": {
       "8": {
         "steps": [
           "Tag Waypoint (left of gate entrance)",
@@ -824,7 +824,7 @@
         ]
       }
     },
-    "Imperial Fields": {
+    "The Imperial Fields": {
       "8": {
         "steps": [
           "Tag Waypoint (follow road up from entrance)",
@@ -832,7 +832,7 @@
         ]
       }
     },
-    "Harbour Bridge": {
+    "The Harbour Bridge": {
       "8": {
         "steps": [
           "Enter Sky Shrine (middle of bridge)",
@@ -843,13 +843,13 @@
       }
     },
 
-    "Blood Aqueduct": {
+    "The Blood Aqueduct": {
       "9": { "steps": ["Enter Highgate (town, follow aqueduct)"] }
     },
-    "Descent": {
+    "The Descent": {
       "9": { "steps": ["Go down Supply Hoist (twice, straight ahead)", "Go to Vastiri Desert (bottom exit)"] }
     },
-    "Vastiri Desert": {
+    "The Vastiri Desert": {
       "9": {
         "steps": [
           "Tag Waypoint (mid-zone, follow main path from entrance)",
@@ -860,7 +860,7 @@
         ]
       }
     },
-    "Oasis": {
+    "The Oasis": {
       "9": {
         "steps": [
           "Enter Sand Pit (centre of Oasis)",
@@ -869,7 +869,7 @@
         ]
       }
     },
-    "Foothills": {
+    "The Foothills": {
       "9": {
         "steps": [
           "Tag Waypoint (top of zone, follow path up)",
@@ -878,7 +878,7 @@
         ]
       }
     },
-    "Boiling Lake": {
+    "The Boiling Lake": {
       "9": {
         "steps": [
           "Kill Basilisk (centre of lake)",
@@ -887,7 +887,7 @@
         ]
       }
     },
-    "Tunnel": {
+    "The Tunnel": {
       "9": {
         "steps": [
           "Tag Waypoint (right of entrance warp)",
@@ -896,7 +896,7 @@
         ]
       }
     },
-    "Quarry": {
+    "The Quarry": {
       "9": {
         "steps": [
           "Tag Waypoint (left of entrance warp)",
@@ -907,7 +907,7 @@
         ]
       }
     },
-    "Refinery": {
+    "The Refinery": {
       "9": {
         "steps": [
           "Kill General Adus (inside refinery, far end)",
@@ -918,7 +918,7 @@
         ]
       }
     },
-    "Rotting Core": {
+    "The Rotting Core": {
       "9": {
         "steps": [
           "Enter Black Core (centre of zone)",
@@ -933,7 +933,7 @@
     "Oriath Docks": {
       "10": { "steps": ["Go to Cathedral Rooftop (follow docks path up)"] }
     },
-    "Ravaged Square": {
+    "The Ravaged Square": {
       "10": {
         "steps": [
           "Tag Waypoint (right/up from entrance)",
@@ -944,7 +944,7 @@
         ]
       }
     },
-    "Desecrated Chambers": {
+    "The Desecrated Chambers": {
       "10": {
         "steps": [
           "Tag Waypoint (right of entrance warp)",
@@ -952,7 +952,7 @@
         ]
       }
     },
-    "Canals": {
+    "The Canals": {
       "10": { "steps": ["Follow canal (straight path)", "Go to Feeding Trough (end of canal)"] }
     },
     "The Feeding Trough": {
