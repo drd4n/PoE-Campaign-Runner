@@ -104,7 +104,9 @@ Two sub-calls:
 
 **`_build_ui()`** builds the label hierarchy (header row with act + progress → zone label → steps label) and a hidden `_button_container` with a `QHBoxLayout` reserved for act-selection buttons when a zone is ambiguous.
 
-`BackButton` is a **second, separate window** holding only `◀ Back`. The checklist panel keeps `WindowTransparentForInput`, so the only pixels that swallow clicks from the game are the button itself. It re-docks under the panel's bottom-right corner on every move and resize.
+`BackButton` is a **second, separate window** holding only `◀ Back`. The checklist panel keeps `WindowTransparentForInput`, so the only pixels that swallow clicks from the game are the button itself. It re-docks under the panel's bottom-left corner on every move and resize.
+
+The panel itself snaps to the **top-left** of the primary screen (`_snap_top_left()`), a `_MARGIN` in from each edge.
 
 ### 5. Start watching the log — `log_watcher.py: LogWatcher.run()`
 

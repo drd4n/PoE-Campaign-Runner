@@ -71,7 +71,7 @@ def main() -> None:
     # then try to pick up whatever zone they're already standing in.
     if not overlay.isVisible():
         overlay.show_status("Watching Client.txt…\nZone in to begin.")
-    log.info("Overlay shown (top-right). Waiting for zone changes.")
+    log.info("Overlay shown (top-left). Waiting for zone changes.")
 
     last_zone = read_last_zone(log_path)
     if last_zone:

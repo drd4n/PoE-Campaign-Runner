@@ -58,12 +58,9 @@ class BackButton(QWidget):
         self.adjustSize()
 
     def dock_under(self, panel: QWidget) -> None:
-        """Sit just below the panel, right edges aligned."""
+        """Sit just below the panel, left edges aligned."""
         self.adjustSize()
-        self.move(
-            panel.x() + panel.width() - self.width(),
-            panel.y() + panel.height() + 6,
-        )
+        self.move(panel.x(), panel.y() + panel.height() + 6)
 
 
 class OverlayWindow(QWidget):
@@ -175,7 +172,7 @@ class OverlayWindow(QWidget):
 
         self._set_interactive(False)
         self.adjustSize()
-        self._snap_top_right()
+        self._snap_top_left()
         self.show()
         self._back.dock_under(self)
         self._back.show()
@@ -204,7 +201,7 @@ class OverlayWindow(QWidget):
         self._zone_label.setText(message)
         self._set_interactive(False)
         self.adjustSize()
-        self._snap_top_right()
+        self._snap_top_left()
         self.show()
 
     def show_zone(self, zone_name: str, steps: list[str], act: int) -> None:
@@ -216,7 +213,7 @@ class OverlayWindow(QWidget):
         self._steps_label.setText("\n".join(f"  • {s}" for s in steps))
         self._set_interactive(False)
         self.adjustSize()
-        self._snap_top_right()
+        self._snap_top_left()
         self.show()
 
     def show_act_selection(self, zone_name: str, possible_acts: list[int]) -> None:
@@ -241,7 +238,7 @@ class OverlayWindow(QWidget):
         self._button_container.show()
         self._set_interactive(True)
         self.adjustSize()
-        self._snap_top_right()
+        self._snap_top_left()
         self.show()
 
     def show_no_data(self, zone_name: str) -> None:
@@ -254,12 +251,12 @@ class OverlayWindow(QWidget):
         self._steps_label.setText("  • No data for this zone")
         self._set_interactive(False)
         self.adjustSize()
-        self._snap_top_right()
+        self._snap_top_left()
         self.show()
 
     def _set_interactive(self, interactive: bool) -> None:
         self.setWindowFlag(Qt.WindowType.WindowTransparentForInput, not interactive)
 
-    def _snap_top_right(self) -> None:
+    def _snap_top_left(self) -> None:
         screen = QApplication.primaryScreen().availableGeometry()
-        self.move(screen.right() - self.width() - _MARGIN, screen.top() + _MARGIN)
+        self.move(screen.left() + _MARGIN, screen.top() + _MARGIN)
