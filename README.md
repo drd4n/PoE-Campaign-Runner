@@ -10,7 +10,7 @@ A lightweight, always-on-top overlay for Path of Exile 1 that shows a checklist 
 
 - Shows the **whole act as a checklist** — done steps ticked, the step you're on expanded into bullets, everything ahead listed
 - Follows you automatically: each zone change moves the pointer forward through the act
-- Handles duplicate zone names across acts (Lioneye's Watch, Crossroads, etc.) with an in-overlay act picker
+- Asks which act you're in every time you enter a town whose name is shared by two acts (Lioneye's Watch 1/6, Sarn Encampment 3/8, Highgate 4/9)
 - Marks once-per-league content (`⟲` Trials, Tidal Island) and optional detours (`○` Siosa's skill gems)
 - `◀ Back` and `Next ▶` buttons nudge the pointer a step either way when tracking drifts
 - Remembers where you were — progress survives a restart
@@ -131,7 +131,7 @@ Every zone transition arrives here and can only move the pointer **forward**, wh
 1. **Scan forward** from the pointer for the next step in this act with that zone. Found → jump there, ticking everything passed. Re-entering the zone the pointer already sits on means you left and came back, so the scan starts one step later.
 2. **Zone is behind us** (backtracking) → hold the pointer, flag `off_route`.
 3. **Zone belongs to another act** → switch, but only if it *starts* that act. Without that guard, walking into Act 1's Tidal Island would yank you to Act 6, where Tidal Island is step 4. At cold start there's no act to protect, so any position is accepted.
-4. **Several acts qualify** (Crossroads → 2 and 7) → `Update("ambiguous")`, and the overlay asks. When the next act is among the candidates it wins automatically, which is how Act 5 → 6 at Lioneye's Watch resolves without a prompt.
+4. **Several acts qualify** (Crossroads → 2 and 7) → `Update("ambiguous")`, and the overlay asks. When the next act is among the candidates it wins automatically.
 5. **Zone in no act** → `Update("unknown")`; the overlay shows a waiting message.
 
 Between 1 and 2 there's a fallback: plenty of zones are named only inside a step's instructions rather than heading one of their own — Act 1's Mud Flats and Tidal Island both live inside Coast steps. If no step *zone* matches, the tracker scans forward for a step whose bullets name the zone and moves there, so walking the route as written never reads as off-route.
@@ -144,7 +144,9 @@ Between 1 and 2 there's a fallback: plenty of zones are named only inside a step
 
 ### 9. Corrections — the act picker, `◀ Back` and `Next ▶`
 
-An ambiguous zone stores the zone in `pending_zone` and shows the same act-selection buttons map mode uses; the pick calls `set_act(act, zone)`, which lands the pointer on that act's first matching step.
+**Shared-name towns always ask.** `acts.json` carries a `towns` map, and the three towns whose name is reused by another act — Lioneye's Watch (1/6), The Sarn Encampment (3/8), Highgate (4/9) — return `Update("ambiguous")` on every entry, before any inference runs. Towns with a name of their own (Forest Encampment, Overseer's Tower…) never ask, and shared-name *non*-town zones (Coast, Crossroads, Crypt Level 1) still resolve silently mid-act.
+
+The zone is stored in `pending_zone` and the answer goes to `choose_act(act, zone)`. Answering with the act you're already in resolves like an ordinary zone entry, so the fourth town trip of Act 3 stays the fourth instead of snapping back to the first; only a real switch resets to that act's first matching step.
 
 `◀ Back` calls `tracker.back()` — pointer −1, unticking that step, rolling into the previous act's last step at a boundary.
 
@@ -179,7 +181,7 @@ main()
        └─ "unknown"      → overlay.show_status()
 
   [player clicks]
-  act button  → tracker.set_act(act, pending_zone) → render()
+  act button  → tracker.choose_act(act, pending_zone) → render()
   ◀ Back      → tracker.back()                     → render()
   Next ▶      → tracker.forward()                  → render()
 ```
@@ -198,7 +200,7 @@ poe-campaign-overlay/
 ├── config.py           # Client.txt path and saved progress
 ├── log_watcher.py      # Background thread that tails Client.txt
 ├── act_data.py         # ActTracker — the act checklist and position pointer
-├── acts.json           # 211 steps across Acts 1–10          (act mode)
+├── acts.json           # 211 steps + town map, Acts 1–10     (act mode)
 ├── checklist_view.py   # Checklist rendering — pure strings, no Qt
 ├── overlay.py          # PyQt6 overlay window + step button window
 ├── zone_data.py        # ZoneTracker — per-zone lookup        (map mode)
@@ -216,8 +218,8 @@ poe-campaign-overlay/
 
 ```bash
 cd poe-campaign-overlay
-python3 test_acts.py       # ActTracker: 80 checks
-python3 test_act_mode.py   # log line → overlay wiring + rendering: 36 checks
+python3 test_acts.py       # ActTracker: 93 checks
+python3 test_act_mode.py   # log line → overlay wiring + rendering: 43 checks
 python3 test_zones.py      # ZoneTracker (map mode)
 ```
 

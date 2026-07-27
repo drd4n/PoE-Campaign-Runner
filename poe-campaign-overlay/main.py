@@ -143,7 +143,7 @@ def wire_act_mode(overlay: OverlayWindow):
 
     def on_act_selected(act: int) -> None:
         log.info("Player selected Act %d.", act)
-        tracker.set_act(act, pending_zone[0])
+        tracker.choose_act(act, pending_zone[0])
         pending_zone[0] = None
         render()
 

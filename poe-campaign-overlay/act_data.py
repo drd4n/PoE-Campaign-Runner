@@ -66,6 +66,16 @@ class ActTracker:
             for i, step in enumerate(steps):
                 self._by_zone.setdefault(step.key, []).append((act, i))
 
+        # Towns whose name is reused by another act — Lioneye's Watch (1/6),
+        # The Sarn Encampment (3/8), Highgate (4/9). Walking into one always
+        # asks which act you're in rather than inferring it.
+        towns = data.get("towns", {})
+        counts: dict[str, int] = {}
+        for town in towns.values():
+            counts[_normalize(town)] = counts.get(_normalize(town), 0) + 1
+        self._shared_towns = {key for key, n in counts.items() if n > 1}
+        self._zone_before_prompt: str | None = None
+
         self.current_act: int = 0
         self.pointer: int = 0
         self.off_route: bool = False
@@ -128,6 +138,9 @@ class ActTracker:
                 # Kitava is down and the player has left for maps or levelling.
                 self.completed = True
                 return Update("held")
+            if key in self._shared_towns:
+                self._zone_before_prompt = self._last_zone
+                return Update("ambiguous", tuple(self.possible_acts(key)))
             if self.current_act:
                 return self._advance_within_act(key)
             return self._pick_act(key, require_act_start=False)
@@ -218,8 +231,24 @@ class ActTracker:
         return Update("moved")
 
     def set_act(self, act: int, zone_name: str | None = None) -> None:
-        """Called after the player picks an act from the overlay."""
+        """Jump to an act, pointing at its first step in the given zone."""
         self._enter_act(act, _normalize(zone_name) if zone_name else None)
+
+    def choose_act(self, act: int, zone_name: str | None) -> None:
+        """Apply the player's answer to an act prompt.
+
+        Answering with the act you're already in must not rewind you: the
+        fourth town trip of Act 3 should stay the fourth, not snap back to the
+        first. So it resolves like an ordinary zone entry, and only a real
+        switch resets to that act's first matching step.
+        """
+        if zone_name is None or act != self.current_act:
+            self.set_act(act, zone_name)
+            return
+        key = _normalize(zone_name)
+        current, self._last_zone = self._last_zone, self._zone_before_prompt
+        self._advance_within_act(key)
+        self._last_zone = current
 
     def _enter_act(self, act: int, key: str | None) -> None:
         self.current_act = act

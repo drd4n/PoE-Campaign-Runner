@@ -77,7 +77,8 @@ def test_forward_only():
     t.enter_zone("The Twilight Strand")
     check("act 1 picked up from Twilight Strand", t.current_act == 1 and t.pointer == 0)
 
-    t.enter_zone("Lioneye's Watch")
+    t.enter_zone("Lioneye's Watch")  # shared with act 6, so it asks
+    t.choose_act(1, "Lioneye's Watch")
     check("town is step 2", t.pointer == 1)
 
     t.enter_zone("The Coast")
@@ -97,6 +98,7 @@ def test_forward_only():
     t.enter_zone("The Flooded Depths")
     check("Flooded Depths is step 6", t.pointer == 5)
     t.enter_zone("Lioneye's Watch")
+    t.choose_act(1, "Lioneye's Watch")
     check("town again is step 7, not step 2", t.pointer == 6, str(t.pointer))
     t.enter_zone("The Submerged Passage")
     check("Submerged Passage again is step 8, not step 5", t.pointer == 7, str(t.pointer))
@@ -120,19 +122,22 @@ def test_transitions():
     check("…landing on act 2 step 1", t.pointer == 0)
     check("…without asking, despite also being an act 6 zone", u.acts == ())
 
-    # Lioneye's Watch is act 1's town and act 6's opening zone.
+    # Lioneye's Watch is act 1's town and act 6's opening zone — a shared-name
+    # town, so it asks rather than inferring (see test_town_prompt).
     t = fresh()
     t.enter_zone("The Slave Pens")
     check("Slave Pens sets act 5", t.current_act == 5)
     u = t.enter_zone("Lioneye's Watch")
-    check("Lioneye's Watch after act 5 goes to act 6", t.current_act == 6, str(t.current_act))
-    check("…on step 1", t.pointer == 0 and u.kind == "moved")
+    check("Lioneye's Watch after act 5 asks", u.kind == "ambiguous", u.kind)
+    t.choose_act(6, "Lioneye's Watch")
+    check("…and answering act 6 lands on step 1", t.current_act == 6 and t.pointer == 0)
 
-    # …but the same zone mid-act-1 must not leap to act 6.
+    # …and answering act 1 keeps you in act 1.
     t = fresh()
     t.enter_zone("The Twilight Strand")
     t.enter_zone("Lioneye's Watch")
-    check("Lioneye's Watch in act 1 stays in act 1", t.current_act == 1, str(t.current_act))
+    t.choose_act(1, "Lioneye's Watch")
+    check("Lioneye's Watch answered act 1 stays in act 1", t.current_act == 1, str(t.current_act))
 
     # A zone that only exists mid-way through another act must not switch acts.
     t = fresh()
@@ -143,6 +148,62 @@ def test_transitions():
 
 
 # --- off-route --------------------------------------------------------------
+
+
+def test_town_prompt():
+    print("\n--- shared-name town prompt ---")
+    t = fresh()
+    t.enter_zone("The City of Sarn")
+    check("act 3 picked up", t.current_act == 3)
+
+    u = t.enter_zone("The Sarn Encampment")
+    check("entering a shared-name town asks", u.kind == "ambiguous", u.kind)
+    check("…offering acts 3 and 8", u.acts == (3, 8), str(u.acts))
+
+    t.choose_act(3, "The Sarn Encampment")
+    check("answering act 3 moves to the town step", t.current_step.zone == "The Sarn Encampment")
+    check("…in act 3", t.current_act == 3)
+    first_town = t.pointer
+
+    # Later town trips must not rewind to the first one.
+    for zone in ("The Slums", "The Crematorium"):
+        t.enter_zone(zone)
+    t.enter_zone("The Sarn Encampment")
+    t.choose_act(3, "The Sarn Encampment")
+    check("a later town trip advances instead of rewinding",
+          t.pointer > first_town, f"{t.pointer} vs {first_town}")
+
+    # Answering with the other act switches.
+    t.enter_zone("The Sarn Encampment")
+    t.choose_act(8, "The Sarn Encampment")
+    check("answering act 8 switches act", t.current_act == 8)
+    check("…to an act 8 Sarn Encampment step", t.current_step.zone == "The Sarn Encampment")
+
+    # Towns with a name of their own are never ambiguous.
+    t2 = fresh()
+    t2.enter_zone("The Southern Forest")
+    t2.set_act(2, "The Southern Forest")
+    u = t2.enter_zone("The Forest Encampment")
+    check("a uniquely named town doesn't ask", u.kind != "ambiguous", u.kind)
+
+    t3 = fresh()
+    t3.enter_zone("The Slave Pens")
+    u = t3.enter_zone("Overseer's Tower")
+    check("Overseer's Tower doesn't ask either", u.kind != "ambiguous", u.kind)
+
+    # Non-town zones sharing a name still resolve on their own mid-act.
+    t4 = fresh()
+    t4.enter_zone("The Twilight Strand")
+    u = t4.enter_zone("The Coast")
+    check("a shared-name non-town zone still resolves silently", u.kind == "moved", u.kind)
+
+    # Lioneye's Watch at the Act 5 → 6 boundary now asks rather than guessing.
+    t5 = fresh()
+    t5.enter_zone("The Slave Pens")
+    u = t5.enter_zone("Lioneye's Watch")
+    check("Lioneye's Watch after act 5 asks", u.kind == "ambiguous", u.kind)
+    t5.choose_act(6, "Lioneye's Watch")
+    check("…and act 6 starts at step 1", t5.current_act == 6 and t5.pointer == 0)
 
 
 def test_off_route():
@@ -372,6 +433,7 @@ if __name__ == "__main__":
     test_cold_start()
     test_forward_only()
     test_transitions()
+    test_town_prompt()
     test_off_route()
     test_back()
     test_forward()

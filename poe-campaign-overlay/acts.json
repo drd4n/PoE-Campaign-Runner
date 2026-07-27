@@ -6,6 +6,18 @@
     "note": "Adapted from the PoE Wiki Acts quick guide. Hand-maintained; not regenerated.",
     "revision_date": "2026-07-25T04:00:10Z"
   },
+  "towns": {
+    "1": "Lioneye's Watch",
+    "2": "The Forest Encampment",
+    "3": "The Sarn Encampment",
+    "4": "Highgate",
+    "5": "Overseer's Tower",
+    "6": "Lioneye's Watch",
+    "7": "The Bridge Encampment",
+    "8": "The Sarn Encampment",
+    "9": "Highgate",
+    "10": "Oriath Docks"
+  },
   "acts": {
     "1": {
       "steps": [

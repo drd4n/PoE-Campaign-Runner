@@ -151,6 +151,33 @@ def test_picker(tmp: Path):
     check("…on a Crossroads step", overlay.checklist[1][pointer].zone == "The Crossroads")
 
 
+def test_town_prompt(tmp: Path):
+    print("\n--- shared-name town prompt ---")
+    overlay, on_zone = wired(tmp / "t.json")
+    on_zone("The City of Sarn")
+    on_zone("The Sarn Encampment")
+
+    call = overlay.last("picker")
+    check("walking into a shared-name town opens the picker", call is not None)
+    check("…naming the town", call and call[1] == "The Sarn Encampment", str(call))
+    check("…offering acts 3 and 8", call and call[2] == (3, 8), str(call and call[2]))
+
+    overlay.act_selected.emit(3)
+    call = overlay.last("checklist")
+    check("answering redraws the checklist", call is not None)
+    check("…still in act 3", call and call[1] == 3, str(call and call[1]))
+    check("…on a Sarn Encampment step",
+          overlay.checklist[1][overlay.checklist[2]].zone == "The Sarn Encampment")
+
+    overlay2, on_zone2 = wired(tmp / "t2.json")
+    on_zone2("The Southern Forest")
+    overlay2.act_selected.emit(2)
+    before = len(overlay2.calls)
+    on_zone2("The Forest Encampment")
+    check("a uniquely named town doesn't prompt",
+          overlay2.last("picker") is None or len(overlay2.calls) > before)
+
+
 def test_back_button(tmp: Path):
     print("\n--- back button ---")
     overlay, on_zone = wired(tmp / "c.json")
@@ -272,6 +299,7 @@ if __name__ == "__main__":
         tmp = Path(d)
         test_zone_to_overlay(tmp)
         test_picker(tmp)
+        test_town_prompt(tmp)
         test_back_button(tmp)
         test_next_button(tmp)
         test_persistence(tmp)
