@@ -4,9 +4,9 @@ from PyQt6.QtGui import QFont, QPainter, QColor, QPainterPath
 
 from checklist_view import OFF_ROUTE_COLOR, checklist_html, header_text, progress_text
 
-_WIDTH = 360
+_WIDTH = 300
 _MARGIN = 16
-_PADDING = 12
+_PADDING = 10
 _BG = QColor(10, 10, 10, 210)
 _ZONE_COLOR = "#e8c97a"
 _STEP_COLOR = "#cccccc"
@@ -19,7 +19,7 @@ _BTN_STYLE = """
         border-radius: 4px;
         padding: 5px 14px;
         font-family: Consolas;
-        font-size: 10pt;
+        font-size: 8pt;
     }
     QPushButton:hover {
         background: rgba(232, 201, 122, 50);
@@ -106,26 +106,26 @@ class OverlayWindow(QWidget):
         header_layout.setSpacing(8)
 
         self._act_label = QLabel()
-        self._act_label.setFont(QFont("Consolas", 9))
+        self._act_label.setFont(QFont("Consolas", 7))
         self._act_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
         header_layout.addWidget(self._act_label)
         header_layout.addStretch()
 
         self._progress_label = QLabel()
-        self._progress_label.setFont(QFont("Consolas", 9))
+        self._progress_label.setFont(QFont("Consolas", 7))
         self._progress_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
         header_layout.addWidget(self._progress_label)
 
         layout.addWidget(header)
 
         self._zone_label = QLabel()
-        self._zone_label.setFont(QFont("Consolas", 11, QFont.Weight.Bold))
+        self._zone_label.setFont(QFont("Consolas", 9, QFont.Weight.Bold))
         self._zone_label.setStyleSheet(f"color: {_ZONE_COLOR}; background: transparent;")
         self._zone_label.setWordWrap(True)
         layout.addWidget(self._zone_label)
 
         self._steps_label = QLabel()
-        self._steps_label.setFont(QFont("Consolas", 10))
+        self._steps_label.setFont(QFont("Consolas", 8))
         self._steps_label.setStyleSheet(f"color: {_STEP_COLOR}; background: transparent;")
         self._steps_label.setWordWrap(True)
         self._steps_label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
