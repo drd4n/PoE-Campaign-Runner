@@ -1,0 +1,1881 @@
+{
+  "_source": {
+    "url": "https://www.poewiki.net/wiki/Guide:Acts_quick_guide",
+    "revision": 1679380,
+    "license": "CC BY-NC-SA 3.0",
+    "note": "Adapted from the PoE Wiki Acts quick guide. Hand-maintained; not regenerated.",
+    "revision_date": "2026-07-25T04:00:10Z"
+  },
+  "acts": {
+    "1": {
+      "steps": [
+        {
+          "zone": "The Twilight Strand",
+          "short": "Twilight Strand — kill Hillock",
+          "steps": [
+            "Kill Hillock",
+            "Go to Town"
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, go to Coast",
+          "steps": [
+            "Talk to NPCs",
+            "Go to Coast"
+          ]
+        },
+        {
+          "zone": "The Coast",
+          "short": "Coast — tag WP, Tidal Island",
+          "steps": [
+            "Tag WP",
+            "Go to Tidal Island (near WP)",
+            "Kill Hailrake",
+            "Get Medicine Chest",
+            "TP to town and talk to NPCs for Quicksilver Flask",
+            "WP to Coast"
+          ],
+          "per_league": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "zone": "The Coast",
+          "short": "Coast — Mud Flats, 3 glyphs",
+          "steps": [
+            "Go to Mud Flats",
+            "Get Roseus Glyph, Ammonite Glyph and Haliotis Glyph from Rhoa Nests",
+            "Activate Strange Glyph Wall",
+            "Go to Submerged Passage"
+          ]
+        },
+        {
+          "zone": "The Submerged Passage",
+          "short": "Submerged Passage — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Flooded Depths"
+          ]
+        },
+        {
+          "zone": "The Flooded Depths",
+          "short": "Flooded Depths — Dweller of the Deep",
+          "steps": [
+            "Kill Dweller of the Deep",
+            "TP to town"
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, WP to Sub. Passage",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Submerged Passage"
+          ]
+        },
+        {
+          "zone": "The Submerged Passage",
+          "short": "Submerged Passage — go to Ledge",
+          "steps": [
+            "Go to Ledge"
+          ]
+        },
+        {
+          "zone": "The Ledge",
+          "short": "Ledge — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Climb"
+          ]
+        },
+        {
+          "zone": "The Climb",
+          "short": "Climb — enter Lower Prison",
+          "steps": [
+            "Enter Lower Prison"
+          ]
+        },
+        {
+          "zone": "The Lower Prison",
+          "short": "Lower Prison — Trial, Upper Prison",
+          "steps": [
+            "Complete Trial",
+            "Go to Upper Prison"
+          ],
+          "per_league": [
+            0
+          ]
+        },
+        {
+          "zone": "The Upper Prison",
+          "short": "Upper Prison — Warden's Quarters",
+          "steps": [
+            "Enter Warden's Quarters",
+            "Follow blood to Warden's Chambers"
+          ]
+        },
+        {
+          "zone": "The Warden's Chambers",
+          "short": "Warden's Chambers — kill Brutus",
+          "steps": [
+            "Kill Brutus",
+            "Go to Prisoner's Gate",
+            "Tag WP (near entry)",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, WP to Prisoner's Gate",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Prisoner's Gate"
+          ]
+        },
+        {
+          "zone": "Prisoner's Gate",
+          "short": "Prisoner's Gate — Ship Graveyard",
+          "steps": [
+            "Go to Ship Graveyard"
+          ]
+        },
+        {
+          "zone": "The Ship Graveyard",
+          "short": "Ship Graveyard — WP, Fairgraves",
+          "steps": [
+            "Tag WP",
+            "Kill Fairgraves",
+            "Take Allflame",
+            "Go to Cavern of Wrath"
+          ]
+        },
+        {
+          "zone": "The Cavern of Wrath",
+          "short": "Cavern of Wrath — WP, Merveil's Lair",
+          "steps": [
+            "Tag WP",
+            "Go to Cavern of Anger",
+            "Enter Merveil's Lair"
+          ]
+        },
+        {
+          "zone": "Merveil's Lair",
+          "short": "Merveil's Lair — kill Merveil",
+          "steps": [
+            "Kill Merveil and Merveil, the Twisted",
+            "Go to Act II"
+          ]
+        }
+      ]
+    },
+    "2": {
+      "steps": [
+        {
+          "zone": "The Southern Forest",
+          "short": "Southern Forest — town, Old Fields",
+          "steps": [
+            "Town (The Forest Encampment)",
+            "Go to Old Fields (top-right exit from town)"
+          ]
+        },
+        {
+          "zone": "The Old Fields",
+          "short": "Old Fields — Den, Great White Beast",
+          "steps": [
+            "(Enter The Den and kill the Great White Beast for Quicksilver Flask reward)",
+            "Go to Crossroads"
+          ]
+        },
+        {
+          "zone": "The Crossroads",
+          "short": "Crossroads — tag WP, Chamber of Sins",
+          "steps": [
+            "Tag WP (follow road)",
+            "Go to Chamber of Sins Level 1 (up/left)"
+          ]
+        },
+        {
+          "zone": "The Chamber of Sins Level 1",
+          "short": "Chamber of Sins 1 — tag WP",
+          "steps": [
+            "Tag WP (centre)",
+            "Go to Chamber of Sins Level 2 (direction of WP)"
+          ]
+        },
+        {
+          "zone": "The Chamber of Sins Level 2",
+          "short": "Chamber of Sins 2 — Trial, Fidelitas",
+          "steps": [
+            "Solve Trial",
+            "Kill Fidelitas",
+            "Take Baleful Gem",
+            "TP to Town"
+          ],
+          "per_league": [
+            0
+          ]
+        },
+        {
+          "zone": "The Forest Encampment",
+          "short": "Town — NPCs, WP to Crossroads",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Crossroads"
+          ]
+        },
+        {
+          "zone": "The Crossroads",
+          "short": "Crossroads — go to Broken Bridge",
+          "steps": [
+            "Go to Broken Bridge (up/right)"
+          ]
+        },
+        {
+          "zone": "The Broken Bridge",
+          "short": "Broken Bridge — tag WP, Kraityn",
+          "steps": [
+            "Tag WP (follow road)",
+            "Kill or Save Kraityn",
+            "Take Kraityn's Amulet",
+            "TP to town"
+          ]
+        },
+        {
+          "zone": "The Forest Encampment",
+          "short": "Town — WP to Crossroads, Fellshrine",
+          "steps": [
+            "WP to Crossroads",
+            "Go to Fellshrine Ruins (right/down)"
+          ]
+        },
+        {
+          "zone": "The Fellshrine Ruins",
+          "short": "Fellshrine Ruins — Crypt Level 1",
+          "steps": [
+            "Go to Crypt Level 1"
+          ]
+        },
+        {
+          "zone": "The Crypt Level 1",
+          "short": "Crypt Level 1 — Trial, Crypt Level 2",
+          "steps": [
+            "Solve Trial",
+            "Go to The Crypt Level 2"
+          ],
+          "per_league": [
+            0
+          ]
+        },
+        {
+          "zone": "The Crypt Level 2",
+          "short": "Crypt Level 2 — Golden Hand, skill pt",
+          "steps": [
+            "Take Golden Hand",
+            "TP to Town",
+            "Talk to Yeena for skill point"
+          ]
+        },
+        {
+          "zone": "The Forest Encampment",
+          "short": "Town — go to Riverways",
+          "steps": [
+            "Go to Riverways (bottom-left exit from town)"
+          ]
+        },
+        {
+          "zone": "The Riverways",
+          "short": "Riverways — tag WP, Western Forest",
+          "steps": [
+            "Tag WP (follow broken road)",
+            "Go to Western Forest (down)"
+          ]
+        },
+        {
+          "zone": "The Western Forest",
+          "short": "Western Forest — tag WP, Alira",
+          "steps": [
+            "Tag WP (follow road)",
+            "Kill or Save Alira (left/top from WP)",
+            "(Take Alira's Amulet if you killed her)"
+          ]
+        },
+        {
+          "zone": "The Western Forest",
+          "short": "Western Forest — Arteri, Emblem",
+          "steps": [
+            "Kill Captain Arteri (end of road)",
+            "Take Thaumetic Emblem",
+            "Open Thaumetic Seal",
+            "Go to Weaver's Chambers (other side than Alira)"
+          ]
+        },
+        {
+          "zone": "The Weaver's Chambers",
+          "short": "Weaver's Chambers — kill the Weaver",
+          "steps": [
+            "Enter Weaver's Nest",
+            "Kill Weaver",
+            "Take Maligaro's Spike",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Forest Encampment",
+          "short": "Town — NPCs, Bestel skill point",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Act I town (Lioneye’s Watch)",
+            "Talk to Bestel for skill point",
+            "WP to Riverways"
+          ]
+        },
+        {
+          "zone": "The Riverways",
+          "short": "Riverways — go to Wetlands",
+          "steps": [
+            "Go to Wetlands (up/left)"
+          ]
+        },
+        {
+          "zone": "The Wetlands",
+          "short": "Wetlands — Oak, remove Tree Roots",
+          "steps": [
+            "Kill or Save Oak (middle)",
+            "Take Oak's Amulet",
+            "Remove Tree Roots",
+            "Go to Vaal Ruins"
+          ]
+        },
+        {
+          "zone": "The Vaal Ruins",
+          "short": "Vaal Ruins — activate Ancient Seal",
+          "steps": [
+            "Activate Ancient Seal",
+            "Go to Northern Forest"
+          ]
+        },
+        {
+          "zone": "The Northern Forest",
+          "short": "Northern Forest — WP, The Apex",
+          "steps": [
+            "Tag WP (top)",
+            "TP to Town",
+            "Talk to Eramir or saved Bandit for The Apex",
+            "WP to Northern Forest",
+            "Go to Caverns (top)"
+          ]
+        },
+        {
+          "zone": "The Caverns",
+          "short": "Caverns — tag WP, Ancient Pyramid",
+          "steps": [
+            "Tag WP",
+            "Go to Ancient Pyramid",
+            "Enter Pyramid Apex"
+          ]
+        },
+        {
+          "zone": "Pyramid Apex",
+          "short": "Pyramid Apex — kill Vaal Oversoul",
+          "steps": [
+            "Activate Dark Altar",
+            "Kill Vaal Oversoul",
+            "Go to Act III"
+          ]
+        }
+      ]
+    },
+    "3": {
+      "steps": [
+        {
+          "zone": "The City of Sarn",
+          "short": "City of Sarn — WP, Guard Captain",
+          "steps": [
+            "Tag WP",
+            "Kill Guard Captain",
+            "Talk to Clarissa",
+            "Go to Town"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — go to Slums",
+          "steps": [
+            "Go to Slums (top-right)"
+          ]
+        },
+        {
+          "zone": "The Slums",
+          "short": "Slums — go to Crematorium",
+          "steps": [
+            "Go to Crematorium"
+          ]
+        },
+        {
+          "zone": "The Crematorium",
+          "short": "Crematorium — WP, Trial, Piety",
+          "steps": [
+            "Tag WP",
+            "Solve Trial",
+            "Kill Piety",
+            "Get Tolman's Bracelet",
+            "TP to Town"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — Sewer Keys, Sewer Grating",
+          "steps": [
+            "Get Sewer Keys from Clarissa",
+            "Go to Slums",
+            "Open Sewer Grating (top)",
+            "Go to Sewers"
+          ]
+        },
+        {
+          "zone": "The Sewers",
+          "short": "Sewers — 3 busts, tag WP",
+          "steps": [
+            "Take Bust of Gaius Sentari",
+            "Tag WP",
+            "Take Bust of Hector Titucius and Bust of Marceus Lioneye",
+            "Go to Marketplace (top)"
+          ]
+        },
+        {
+          "zone": "The Marketplace",
+          "short": "Marketplace — WP, Catacombs Trial",
+          "steps": [
+            "Tag WP",
+            "Go to Catacombs (near WP)",
+            "Solve Trial",
+            "TP to Town"
+          ],
+          "per_league": [
+            1,
+            2
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — NPCs, WP to Marketplace",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Marketplace",
+            "Go to Battlefront (up/left)"
+          ]
+        },
+        {
+          "zone": "The Battlefront",
+          "short": "Battlefront — WP, Ribbon Spool",
+          "steps": [
+            "Tag WP",
+            "Take Ribbon Spool (in the big chest)",
+            "Go to Docks (left)"
+          ]
+        },
+        {
+          "zone": "The Docks",
+          "short": "Docks — WP, Thaumetic Sulphite",
+          "steps": [
+            "Tag WP (near Fairgraves)",
+            "Take Thaumetic Sulphite (near WP)",
+            "TP to Town",
+            "WP to Battlefront"
+          ]
+        },
+        {
+          "zone": "The Battlefront",
+          "short": "Battlefront — Solaris Temple 1",
+          "steps": [
+            "Go to Solaris Temple Level 1 (up)"
+          ]
+        },
+        {
+          "zone": "The Solaris Temple Level 1",
+          "short": "Solaris Temple 1 — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Solaris Temple Level 2"
+          ]
+        },
+        {
+          "zone": "The Solaris Temple Level 2",
+          "short": "Solaris Temple 2 — WP, Infernal Talc",
+          "steps": [
+            "Tag WP",
+            "Talk to Dialla for Infernal Talc",
+            "WP to Sewers"
+          ]
+        },
+        {
+          "zone": "The Sewers",
+          "short": "Sewers — open Undying Blockage",
+          "steps": [
+            "Open Undying Blockage",
+            "Go to Ebony Barracks"
+          ]
+        },
+        {
+          "zone": "The Ebony Barracks",
+          "short": "Ebony Barracks — WP, Gravicius",
+          "steps": [
+            "Tag WP",
+            "Kill General Gravicius (up)",
+            "Go to Lunaris Temple Level 1 (up)"
+          ]
+        },
+        {
+          "zone": "The Lunaris Temple Level 1",
+          "short": "Lunaris Temple 1 — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Lunaris Temple Level 2"
+          ]
+        },
+        {
+          "zone": "The Lunaris Temple Level 2",
+          "short": "Lunaris Temple 2 — Piety, Tower Key",
+          "steps": [
+            "Kill Piety",
+            "Take Tower Key",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — NPCs, WP to Ebony Barracks",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Ebony Barracks"
+          ]
+        },
+        {
+          "zone": "The Ebony Barracks",
+          "short": "Ebony Barracks — Imperial Gardens",
+          "steps": [
+            "Go to Imperial Gardens (right/top right)"
+          ]
+        },
+        {
+          "zone": "The Imperial Gardens",
+          "short": "Imperial Gardens — WP, Trial, door",
+          "steps": [
+            "Tag WP",
+            "Solve Trial (top)",
+            "Open Locked Door (top/right)",
+            "Go to Sceptre of God"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "The Imperial Gardens",
+          "short": "Imperial Gardens — go to Library",
+          "steps": [
+            "Go to Library (top-left)"
+          ],
+          "optional": true
+        },
+        {
+          "zone": "The Library",
+          "short": "Library — Siosa, Loose Candle",
+          "steps": [
+            "Tag WP (near Siosa)",
+            "Talk to Siosa",
+            "Activate Loose Candle (top-left/bottom-left of area)",
+            "Go to Archives"
+          ],
+          "optional": true
+        },
+        {
+          "zone": "The Archives",
+          "short": "Archives — 4 Golden Pages",
+          "steps": [
+            "Find 4 Golden Pages",
+            "Go to Library"
+          ],
+          "optional": true
+        },
+        {
+          "zone": "The Library",
+          "short": "Library — buy skill gems",
+          "steps": [
+            "Talk to Siosa",
+            "Purchase Skill Gems"
+          ],
+          "optional": true
+        },
+        {
+          "zone": "The Sceptre of God",
+          "short": "Sceptre of God — stairs, tag WP",
+          "steps": [
+            "Go up Stairs (twice)",
+            "Tag WP (on uppermost floor)",
+            "Go to Upper Sceptre of God"
+          ]
+        },
+        {
+          "zone": "The Upper Sceptre of God",
+          "short": "Upper Sceptre of God — Tower Rooftop",
+          "steps": [
+            "Go to Tower Rooftop"
+          ]
+        },
+        {
+          "zone": "Tower Rooftop",
+          "short": "Tower Rooftop — kill Dominus",
+          "steps": [
+            "Kill Dominus and Dominus, Ascendant",
+            "Go to Act IV"
+          ]
+        }
+      ]
+    },
+    "4": {
+      "steps": [
+        {
+          "zone": "The Aqueduct",
+          "short": "Aqueduct — tag WP, go to town",
+          "steps": [
+            "Tag WP (next to entrance)",
+            "Go to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — go to Dried Lake",
+          "steps": [
+            "Go to Dried Lake (bottom-left exit of Town)"
+          ]
+        },
+        {
+          "zone": "The Dried Lake",
+          "short": "Dried Lake — Voll, Deshret's Banner",
+          "steps": [
+            "Kill Voll",
+            "Take Deshret's Banner",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — Deshret's Seal, Mines",
+          "steps": [
+            "Open Deshret's Seal (near Niko)",
+            "Go to Mines Level 1"
+          ]
+        },
+        {
+          "zone": "The Mines Level 1",
+          "short": "Mines Level 1 — go to Mines Level 2",
+          "steps": [
+            "Go to Mines Level 2"
+          ]
+        },
+        {
+          "zone": "The Mines Level 2",
+          "short": "Mines Level 2 — Deshret's Spirit",
+          "steps": [
+            "Tag Deshret's Spirit",
+            "Enter Crystal Veins"
+          ]
+        },
+        {
+          "zone": "The Crystal Veins",
+          "short": "Crystal Veins — WP, Kaom's Dream",
+          "steps": [
+            "Tag WP",
+            "Go to Kaom's Dream"
+          ]
+        },
+        {
+          "zone": "Kaom's Dream",
+          "short": "Kaom's Dream — Kaom's Stronghold",
+          "steps": [
+            "Go to Kaom's Stronghold"
+          ]
+        },
+        {
+          "zone": "Kaom's Stronghold",
+          "short": "Kaom's Stronghold — WP, King Kaom",
+          "steps": [
+            "Tag WP",
+            "Go to Caldera of the King",
+            "Kill King Kaom",
+            "Take The Eye of Fury",
+            "TP to Town",
+            "WP to Crystal Veins"
+          ]
+        },
+        {
+          "zone": "The Crystal Veins",
+          "short": "Crystal Veins — Daresso's Dream",
+          "steps": [
+            "Talk to Dialla",
+            "Go to Daresso's Dream"
+          ]
+        },
+        {
+          "zone": "Daresso's Dream",
+          "short": "Daresso's Dream — kill Barkhul",
+          "steps": [
+            "Kill Barkhul",
+            "Go to Grand Arena"
+          ]
+        },
+        {
+          "zone": "The Grand Arena",
+          "short": "Grand Arena — tag WP, Daresso",
+          "steps": [
+            "Tag WP",
+            "Kill Unique Trio",
+            "Go to Ring of Blades",
+            "Kill Daresso",
+            "Take The Eye of Desire",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — NPCs, WP to Crystal Veins",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Crystal Veins"
+          ]
+        },
+        {
+          "zone": "The Crystal Veins",
+          "short": "Crystal Veins — Dialla, Belly 1",
+          "steps": [
+            "Talk to Dialla",
+            "Go to Belly of the Beast Level 1"
+          ]
+        },
+        {
+          "zone": "The Belly of the Beast Level 1",
+          "short": "Belly of the Beast 1 — go to Belly 2",
+          "steps": [
+            "Go to Belly of the Beast Level 2"
+          ]
+        },
+        {
+          "zone": "The Belly of the Beast Level 2",
+          "short": "Belly of the Beast 2 — kill Piety",
+          "steps": [
+            "Enter The Bowels of the Beast",
+            "Kill Piety",
+            "Talk to Piety",
+            "Go to Harvest"
+          ]
+        },
+        {
+          "zone": "The Harvest",
+          "short": "Harvest — tag WP, Black Core",
+          "steps": [
+            "Tag WP",
+            "Talk to Piety",
+            "Enter The Black Core"
+          ]
+        },
+        {
+          "zone": "The Black Core",
+          "short": "Black Core — Malachai's 3 parts",
+          "steps": [
+            "Kill Shavronne and take Malachai's Entrails",
+            "Kill Maligaro and take Malachai's Heart",
+            "Kill Doedre and take Malachai's Lungs",
+            "Go to Harvest"
+          ]
+        },
+        {
+          "zone": "The Harvest",
+          "short": "Harvest — Piety and Malachai",
+          "steps": [
+            "Talk to Piety",
+            "Go to Black Core",
+            "Kill Piety and Malachai",
+            "Enter The Black Heart"
+          ]
+        },
+        {
+          "zone": "The Black Heart",
+          "short": "Black Heart — kill Malachai",
+          "steps": [
+            "Kill Malachai",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — NPCs, go to Ascent",
+          "steps": [
+            "Talk to NPCs",
+            "Go to Ascent"
+          ]
+        },
+        {
+          "zone": "The Ascent",
+          "short": "Ascent — summit, activate Lever",
+          "steps": [
+            "Walk to the summit",
+            "Activate Lever",
+            "Go to Act V"
+          ]
+        }
+      ]
+    },
+    "5": {
+      "steps": [
+        {
+          "zone": "The Slave Pens",
+          "short": "Slave Pens — WP, Overseer Krow",
+          "steps": [
+            "Tag WP",
+            "Kill Overseer Krow",
+            "Go to Town"
+          ]
+        },
+        {
+          "zone": "Overseer's Tower",
+          "short": "Town — NPCs, Control Blocks",
+          "steps": [
+            "Talk to NPCs",
+            "Go to Control Blocks"
+          ]
+        },
+        {
+          "zone": "The Control Blocks",
+          "short": "Control Blocks — Miasmeter, Casticus",
+          "steps": [
+            "Pick up Miasmeter (down/left)",
+            "Kill Justicar Casticus (top/right)",
+            "Take Eyes of Zeal",
+            "Go to Oriath Square"
+          ]
+        },
+        {
+          "zone": "Oriath Square",
+          "short": "Oriath Square — WP, Templar Courts",
+          "steps": [
+            "Tag WP",
+            "Open Templar Courts Entrance (top right) and enter Templar Courts"
+          ]
+        },
+        {
+          "zone": "The Templar Courts",
+          "short": "Templar Courts — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Chamber of Innocence"
+          ]
+        },
+        {
+          "zone": "The Chamber of Innocence",
+          "short": "Chamber of Innocence — WP, Sanctum",
+          "steps": [
+            "Tag WP",
+            "Go to Sanctum of Innocence (go leftmost, then right)"
+          ]
+        },
+        {
+          "zone": "Sanctum of Innocence",
+          "short": "Sanctum of Innocence — Avarius",
+          "steps": [
+            "Kill High Templar Avarius and Innocence",
+            "Go to Chamber of Innocence"
+          ]
+        },
+        {
+          "zone": "The Chamber of Innocence",
+          "short": "Chamber of Innocence — Torched Ct.",
+          "steps": [
+            "Go to Torched Courts"
+          ]
+        },
+        {
+          "zone": "The Torched Courts",
+          "short": "Torched Courts — Ruined Square",
+          "steps": [
+            "Go to Ruined Square"
+          ]
+        },
+        {
+          "zone": "The Ruined Square",
+          "short": "Ruined Square — tag WP, Ossuary",
+          "steps": [
+            "Tag WP (top left)",
+            "Go to Ossuary (near WP)"
+          ]
+        },
+        {
+          "zone": "The Ossuary",
+          "short": "Ossuary — Tomb, Sign of Purity",
+          "steps": [
+            "Click Tomb",
+            "Pick up Sign of Purity",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Overseer's Tower",
+          "short": "Town — NPCs, WP to Ruined Square",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Ruined Square"
+          ]
+        },
+        {
+          "zone": "The Ruined Square",
+          "short": "Ruined Square — go to Reliquary",
+          "steps": [
+            "Go to Reliquary (down)"
+          ]
+        },
+        {
+          "zone": "The Reliquary",
+          "short": "Reliquary — tag WP, 3 relics",
+          "steps": [
+            "Tag WP",
+            "Collect Tukohama's Tooth, Hinekora's Hair and Valako's Jaw (corners of zone)",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Overseer's Tower",
+          "short": "Town — NPCs, WP to Ruined Square",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Ruined Square"
+          ]
+        },
+        {
+          "zone": "The Ruined Square",
+          "short": "Ruined Square — Cathedral Rooftop",
+          "steps": [
+            "Go to Cathedral Rooftop"
+          ]
+        },
+        {
+          "zone": "The Cathedral Rooftop",
+          "short": "Cathedral Rooftop — Cathedral Apex",
+          "steps": [
+            "Go to Cathedral Apex"
+          ]
+        },
+        {
+          "zone": "Cathedral Apex",
+          "short": "Cathedral Apex — kill Kitava",
+          "steps": [
+            "Activate Cradle of Purity",
+            "Kill Kitava",
+            "Sail to Act VI"
+          ]
+        }
+      ]
+    },
+    "6": {
+      "steps": [
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — clear Twilight Strand",
+          "steps": [
+            "Go to Twilight Strand",
+            "Kill all Monsters (optional, for all skill gems from Lilly Roth)",
+            "TP to Town"
+          ],
+          "per_league": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, go to Coast",
+          "steps": [
+            "Talk to NPCs",
+            "Go to Coast"
+          ]
+        },
+        {
+          "zone": "The Coast",
+          "short": "Coast — tag WP, Tidal Island",
+          "steps": [
+            "Tag WP",
+            "Go to Tidal Island"
+          ]
+        },
+        {
+          "zone": "The Tidal Island",
+          "short": "Tidal Island — Bestel's Manuscript",
+          "steps": [
+            "Get Bestel's Manuscript",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, WP to Coast",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Coast"
+          ]
+        },
+        {
+          "zone": "The Coast",
+          "short": "Coast — go to Mud Flats",
+          "steps": [
+            "Go to Mud Flats"
+          ]
+        },
+        {
+          "zone": "The Mud Flats",
+          "short": "Mud Flats — Dishonoured Queen",
+          "steps": [
+            "Kill Dishonoured Queen",
+            "Take Eye of Conquest",
+            "Go to Karui Fortress (top/left)"
+          ]
+        },
+        {
+          "zone": "The Karui Fortress",
+          "short": "Karui Fortress — kill Tukohama",
+          "steps": [
+            "Enter Tukohama's Keep",
+            "Kill Tukohama (right)",
+            "Go to Ridge (outside of Arena and right)"
+          ]
+        },
+        {
+          "zone": "The Ridge",
+          "short": "Ridge — tag WP, Lower Prison",
+          "steps": [
+            "Tag WP",
+            "Go to Lower Prison"
+          ]
+        },
+        {
+          "zone": "The Lower Prison",
+          "short": "Lower Prison — tag WP, Trial",
+          "steps": [
+            "Tag WP",
+            "Solve Trial",
+            "Go to Shavronne's Tower"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "Shavronne's Tower",
+          "short": "Shavronne's Tower — Brutus, Shav.",
+          "steps": [
+            "Go to Prison Rooftop",
+            "Kill Brutus and Shavronne",
+            "Go to Warden's Chambers",
+            "Go to Prisoner's Gate"
+          ]
+        },
+        {
+          "zone": "Prisoner's Gate",
+          "short": "Prisoner's Gate — WP, Abberath",
+          "steps": [
+            "Tag WP",
+            "Go to Valley of the Fire Drinker (middle-right of zone)",
+            "Defeat Abberath",
+            "Enter Cloven Pass",
+            "Enter Valley of the Soul Drinker",
+            "Finish off Abberath",
+            "Go back to Prisoner's Gate"
+          ]
+        },
+        {
+          "zone": "Prisoner's Gate",
+          "short": "Prisoner's Gate — Western Forest",
+          "steps": [
+            "Go to Western Forest"
+          ]
+        },
+        {
+          "zone": "The Western Forest",
+          "short": "Western Forest — WP, Riverways",
+          "steps": [
+            "Tag WP (follow road)",
+            "Go to Riverways"
+          ]
+        },
+        {
+          "zone": "The Riverways",
+          "short": "Riverways — tag WP, Wetlands",
+          "steps": [
+            "Tag WP",
+            "Go to Wetlands (up/left)"
+          ]
+        },
+        {
+          "zone": "The Wetlands",
+          "short": "Wetlands — Ryslatha's Nests",
+          "steps": [
+            "Enter Spawning Ground",
+            "Destroy 3 Ryslatha's Nests and Kill Ryslatha",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Lioneye's Watch",
+          "short": "Town — NPCs, WP to Riverways",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Riverways"
+          ]
+        },
+        {
+          "zone": "The Riverways",
+          "short": "Riverways — Southern Forest",
+          "steps": [
+            "Go to Southern Forest (follow road, then down/right)"
+          ]
+        },
+        {
+          "zone": "The Southern Forest",
+          "short": "Southern Forest — WP, Cavern of Ang.",
+          "steps": [
+            "Tag WP (end of area)",
+            "Go to Cavern of Anger (near WP)"
+          ]
+        },
+        {
+          "zone": "The Cavern of Anger",
+          "short": "Cavern of Anger — The Black Flag",
+          "steps": [
+            "Take The Black Flag from Chest",
+            "Go to Beacon"
+          ]
+        },
+        {
+          "zone": "The Beacon",
+          "short": "Beacon — tag WP, light the Beacon",
+          "steps": [
+            "Tag WP",
+            "Refuel and light the Beacon",
+            "Talk to Weylam Roth",
+            "Sail to Brine King's Reef"
+          ]
+        },
+        {
+          "zone": "The Brine King's Reef",
+          "short": "Brine King's Reef — kill Tsoagoth",
+          "steps": [
+            "Tag WP",
+            "Go to Brine King's Throne",
+            "Kill Tsoagoth",
+            "Sail to Act VII"
+          ]
+        }
+      ]
+    },
+    "7": {
+      "steps": [
+        {
+          "zone": "The Bridge Encampment",
+          "short": "Town — go to Broken Bridge",
+          "steps": [
+            "Go to Broken Bridge"
+          ]
+        },
+        {
+          "zone": "The Broken Bridge",
+          "short": "Broken Bridge — go to Crossroads",
+          "steps": [
+            "Go to Crossroads (follow road/left)"
+          ]
+        },
+        {
+          "zone": "The Crossroads",
+          "short": "Crossroads — WP, Fellshrine Ruins",
+          "steps": [
+            "Tag WP (follow road)",
+            "Go to Fellshrine Ruins (down/right)"
+          ]
+        },
+        {
+          "zone": "The Fellshrine Ruins",
+          "short": "Fellshrine Ruins — go to Crypt",
+          "steps": [
+            "Go to Crypt (follow road then right)"
+          ]
+        },
+        {
+          "zone": "The Crypt Level 1",
+          "short": "Crypt 1 — WP, Trial, Maligaro's Map",
+          "steps": [
+            "Tag WP",
+            "Solve Trial",
+            "Open Sarcophagus",
+            "Go to Crypt Level 2",
+            "Take Maligaro's Map",
+            "TP to Town"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "The Bridge Encampment",
+          "short": "Town — WP to Crossroads",
+          "steps": [
+            "WP to Crossroads"
+          ]
+        },
+        {
+          "zone": "The Crossroads",
+          "short": "Crossroads — Chamber of Sins",
+          "steps": [
+            "Go to Chamber of Sins (left)"
+          ]
+        },
+        {
+          "zone": "The Chamber of Sins Level 1",
+          "short": "Chamber of Sins 1 — Map Device",
+          "steps": [
+            "Place Maligaro's Map into the Map Device",
+            "Click Activate",
+            "Enter Maligaro's Sanctum portal"
+          ]
+        },
+        {
+          "zone": "Maligaro's Sanctum",
+          "short": "Maligaro's Sanctum — Black Venom",
+          "steps": [
+            "Kill Maligaro",
+            "Take Black Venom",
+            "TP to Chamber of Sins"
+          ]
+        },
+        {
+          "zone": "The Chamber of Sins Level 1",
+          "short": "Chamber of Sins 1 — Obsidian Key",
+          "steps": [
+            "Talk to Silk for Obsidian Key",
+            "Go to Chamber of Sins Level 2 (direction of WP)"
+          ]
+        },
+        {
+          "zone": "The Chamber of Sins Level 2",
+          "short": "Chamber of Sins 2 — Trial, Den",
+          "steps": [
+            "Solve Trial",
+            "Open Secret Passage (top/right)",
+            "Go to Den"
+          ],
+          "per_league": [
+            0
+          ]
+        },
+        {
+          "zone": "The Den",
+          "short": "Den — tag WP, Ashen Fields",
+          "steps": [
+            "Tag WP",
+            "Go to Ashen Fields (top/right)"
+          ]
+        },
+        {
+          "zone": "The Ashen Fields",
+          "short": "Ashen Fields — WP, Fortress Enc.",
+          "steps": [
+            "Tag WP",
+            "Go to Fortress Encampment (follow road to the left/down)"
+          ]
+        },
+        {
+          "zone": "Fortress Encampment",
+          "short": "Fortress Encampment — kill Greust",
+          "steps": [
+            "Kill Greust",
+            "Go to Northern Forest (top of arena)"
+          ]
+        },
+        {
+          "zone": "The Northern Forest",
+          "short": "Northern Forest — WP, Dread Thicket",
+          "steps": [
+            "Tag WP",
+            "Go to Dread Thicket (left/down)"
+          ]
+        },
+        {
+          "zone": "The Dread Thicket",
+          "short": "Dread Thicket — fireflies, Gruthkul",
+          "steps": [
+            "Collect 7 Fireflies",
+            "Go to Den of Despair (centre)",
+            "Kill Gruthkul",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Bridge Encampment",
+          "short": "Town — NPCs, WP to Northern Forest",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Northern Forest"
+          ]
+        },
+        {
+          "zone": "The Northern Forest",
+          "short": "Northern Forest — go to Causeway",
+          "steps": [
+            "Go to Causeway (top right/left)"
+          ]
+        },
+        {
+          "zone": "The Causeway",
+          "short": "Causeway — WP, Kishara's Star",
+          "steps": [
+            "Tag WP (end of area)",
+            "Take Kishara's Star from Kishara's Lockbox",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Bridge Encampment",
+          "short": "Town — Weylam skill pt, Vaal City",
+          "steps": [
+            "Talk to Weylam for skillpoint",
+            "Return through open Portal",
+            "Go to Vaal City"
+          ]
+        },
+        {
+          "zone": "The Vaal City",
+          "short": "Vaal City — tag WP, Yeena",
+          "steps": [
+            "Tag WP (middle of zone)",
+            "Talk to Yeena",
+            "Go to Temple of Decay Level 1"
+          ]
+        },
+        {
+          "zone": "The Temple of Decay Level 1",
+          "short": "Temple of Decay 1 — go to level 2",
+          "steps": [
+            "Go to Temple of Decay Level 2"
+          ]
+        },
+        {
+          "zone": "The Temple of Decay Level 2",
+          "short": "Temple of Decay 2 — kill Arakaali",
+          "steps": [
+            "Kill Arakaali",
+            "Go to Act VIII"
+          ]
+        }
+      ]
+    },
+    "8": {
+      "steps": [
+        {
+          "zone": "The Sarn Ramparts",
+          "short": "Sarn Ramparts — go to town",
+          "steps": [
+            "Go to Sarn Encampment"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — go to Toxic Conduits",
+          "steps": [
+            "Go to Toxic Conduits (left)"
+          ]
+        },
+        {
+          "zone": "The Toxic Conduits",
+          "short": "Toxic Conduits — open Loose Gate",
+          "steps": [
+            "Open Loose Gate (end of area)",
+            "Go to Doedre's Cesspool"
+          ]
+        },
+        {
+          "zone": "Doedre's Cesspool",
+          "short": "Doedre's Cesspool — Doedre, tag WP",
+          "steps": [
+            "Enter Cauldron",
+            "Activate Valve",
+            "Kill Deodre",
+            "Tag WP",
+            "Go to Grand Promenade (down/left from WP)"
+          ]
+        },
+        {
+          "zone": "The Grand Promenade",
+          "short": "Grand Promenade — go to Bath House",
+          "steps": [
+            "Go to Bath House (follow right-hand fence)"
+          ]
+        },
+        {
+          "zone": "The Bath House",
+          "short": "Bath House — tag WP, Trial",
+          "steps": [
+            "Tag WP",
+            "Solve Trial (top or left)",
+            "Go to High Gardens (top or left)"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "The High Gardens",
+          "short": "High Gardens — kill Yugul",
+          "steps": [
+            "Go to Pools of Terror (right)",
+            "Kill Yugul",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — NPCs, WP to Bath House",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Bath House"
+          ]
+        },
+        {
+          "zone": "The Bath House",
+          "short": "Bath House — Lunaris Concourse",
+          "steps": [
+            "Go to Lunaris Concourse (right)"
+          ]
+        },
+        {
+          "zone": "The Lunaris Concourse",
+          "short": "Lunaris Concourse — WP, Temple",
+          "steps": [
+            "Tag WP",
+            "Go to Lunaris Temple (top)"
+          ]
+        },
+        {
+          "zone": "The Lunaris Temple Level 1",
+          "short": "Lunaris Temple 1 — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Lunaris Temple Level 2"
+          ]
+        },
+        {
+          "zone": "The Lunaris Temple Level 2",
+          "short": "Lunaris Temple 2 — Dusk, Moon Orb",
+          "steps": [
+            "Kill Dusk",
+            "Take Moon Orb",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — NPCs, WP to Toxic Conduits",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Toxic Conduits"
+          ]
+        },
+        {
+          "zone": "The Toxic Conduits",
+          "short": "Toxic Conduits — go to Quay",
+          "steps": [
+            "Go to Quay (up/right from WP)"
+          ]
+        },
+        {
+          "zone": "The Quay",
+          "short": "Quay — Ankh of Eternity, Tolman",
+          "steps": [
+            "Take Ankh of Eternity (down)",
+            "Enter Resurrection Site (down/left)",
+            "Kill Tolman then talk to Clarissa (nearby)",
+            "Go to Grain Gate (up/right)"
+          ]
+        },
+        {
+          "zone": "The Grain Gate",
+          "short": "Grain Gate — WP, Gemling Legion",
+          "steps": [
+            "Tag WP",
+            "Kill Gemling Legion",
+            "Go to Imperial Fields"
+          ]
+        },
+        {
+          "zone": "The Imperial Fields",
+          "short": "Imperial Fields — WP, Solaris Temple",
+          "steps": [
+            "Tag WP (follow road up)",
+            "Go to Solaris Temple (follow road then further up)"
+          ]
+        },
+        {
+          "zone": "The Solaris Temple Level 1",
+          "short": "Solaris Temple 1 — tag WP",
+          "steps": [
+            "Tag WP",
+            "Go to Solaris Temple Level 2 (up from WP)"
+          ]
+        },
+        {
+          "zone": "The Solaris Temple Level 2",
+          "short": "Solaris Temple 2 — Dawn, Sun Orb",
+          "steps": [
+            "Kill Dawn",
+            "Take Sun Orb",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "The Sarn Encampment",
+          "short": "Town — NPCs, WP to Lunaris Conc.",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Lunaris Concourse"
+          ]
+        },
+        {
+          "zone": "The Lunaris Concourse",
+          "short": "Lunaris Concourse — Harbour Bridge",
+          "steps": [
+            "Go to Harbour Bridge (down/right)"
+          ]
+        },
+        {
+          "zone": "The Harbour Bridge",
+          "short": "Harbour Bridge — Lunaris and Solaris",
+          "steps": [
+            "Enter Sky Shrine (middle of bridge)",
+            "Activate Statue of the Sisters",
+            "Kill Lunaris and Solaris",
+            "Go to Act IX"
+          ]
+        }
+      ]
+    },
+    "9": {
+      "steps": [
+        {
+          "zone": "The Blood Aqueduct",
+          "short": "Blood Aqueduct — enter Highgate",
+          "steps": [
+            "Enter Highgate"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — go to Descent",
+          "steps": [
+            "Go to Descent (top-right exit of Town)"
+          ]
+        },
+        {
+          "zone": "The Descent",
+          "short": "Descent — Supply Hoist twice",
+          "steps": [
+            "Go down Supply Hoist (twice)",
+            "Go to Vastiri Desert"
+          ]
+        },
+        {
+          "zone": "The Vastiri Desert",
+          "short": "Vastiri Desert — WP, Storm Blade",
+          "steps": [
+            "Tag WP",
+            "Open Storm-Weathered Chest",
+            "Kill Monsters",
+            "Pick up Storm Blade",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — NPCs, Bottled Storm",
+          "steps": [
+            "Talk to NPCs for Bottled Storm",
+            "TP to Vastiri Dessert"
+          ]
+        },
+        {
+          "zone": "The Vastiri Desert",
+          "short": "Vastiri Desert — go to Oasis",
+          "steps": [
+            "Go to Oasis (down from WP, then right)"
+          ]
+        },
+        {
+          "zone": "The Oasis",
+          "short": "Oasis — Sand Pit, Shakari",
+          "steps": [
+            "Enter Sand Pit",
+            "Kill Shakari",
+            "TP to Town",
+            "WP to Vastiri Desert"
+          ]
+        },
+        {
+          "zone": "The Vastiri Desert",
+          "short": "Vastiri Desert — go to Foothills",
+          "steps": [
+            "Go to Foothills (up/left)"
+          ]
+        },
+        {
+          "zone": "The Foothills",
+          "short": "Foothills — tag WP, Boiling Lake",
+          "steps": [
+            "Tag WP (up)",
+            "Go to Boiling Lake (up/right from WP)"
+          ]
+        },
+        {
+          "zone": "The Boiling Lake",
+          "short": "Boiling Lake — Basilisk Acid",
+          "steps": [
+            "Kill Basilisk",
+            "Take Basilisk Acid",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — WP to Foothills",
+          "steps": [
+            "WP to Foothills"
+          ]
+        },
+        {
+          "zone": "The Foothills",
+          "short": "Foothills — go to Tunnel",
+          "steps": [
+            "Go to Tunnel (top/left)"
+          ]
+        },
+        {
+          "zone": "The Tunnel",
+          "short": "Tunnel — tag WP, Trial",
+          "steps": [
+            "Tag WP",
+            "Solve Trial (before the WP)",
+            "Go to Quarry"
+          ],
+          "per_league": [
+            1
+          ]
+        },
+        {
+          "zone": "The Quarry",
+          "short": "Quarry — tag WP, Garukhan",
+          "steps": [
+            "Tag WP",
+            "Go to Shrine of the Winds (top right/top left)",
+            "Kill Garukhan and Kira",
+            "Take Sekhema Feather",
+            "Go to Refinery (top right/top left)"
+          ]
+        },
+        {
+          "zone": "The Refinery",
+          "short": "Refinery — Adus, Trarthan Powder",
+          "steps": [
+            "Kill General Adus",
+            "Take Trarthan Powder",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Highgate",
+          "short": "Town — NPCs, WP to Quarry",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Quarry"
+          ]
+        },
+        {
+          "zone": "The Quarry",
+          "short": "Quarry — Sin, Belly of the Beast",
+          "steps": [
+            "Talk to Sin",
+            "Go to Belly of the Beast"
+          ]
+        },
+        {
+          "zone": "The Belly of the Beast",
+          "short": "Belly of the Beast — Rotting Core",
+          "steps": [
+            "Enter Rotting Core"
+          ]
+        },
+        {
+          "zone": "The Rotting Core",
+          "short": "Rotting Core — Black Core, Sin",
+          "steps": [
+            "Enter Black Core",
+            "Talk to Sin"
+          ]
+        },
+        {
+          "zone": "The Black Heart",
+          "short": "Black Heart — Depraved Trinity",
+          "steps": [
+            "Enter the Portals and kill Deodre, Maligaro and Shavronne",
+            "Kill Depraved Trinity",
+            "Sail to Act X"
+          ]
+        }
+      ]
+    },
+    "10": {
+      "steps": [
+        {
+          "zone": "Oriath Docks",
+          "short": "Town — go to Cathedral Rooftop",
+          "steps": [
+            "Go to Cathedral Rooftop"
+          ]
+        },
+        {
+          "zone": "The Cathedral Rooftop",
+          "short": "Cathedral Rooftop — Plaguewing",
+          "steps": [
+            "Go to Cathedral Apex (top-left)",
+            "Kill Plaguewing",
+            "Go to Ravaged Square (bottom-right)"
+          ]
+        },
+        {
+          "zone": "The Ravaged Square",
+          "short": "Ravaged Square — WP, Torched Courts",
+          "steps": [
+            "Tag WP (right/up)",
+            "Go to Torched Courts (right from WP)"
+          ]
+        },
+        {
+          "zone": "The Torched Courts",
+          "short": "Torched Courts — Desecrated Chambers",
+          "steps": [
+            "Go to Desecrated Chambers"
+          ]
+        },
+        {
+          "zone": "The Desecrated Chambers",
+          "short": "Desecrated Chambers — WP, Sanctum",
+          "steps": [
+            "Tag WP",
+            "Go to Sanctum of Innocence (go leftmost, then right)"
+          ]
+        },
+        {
+          "zone": "Sanctum of Innocence",
+          "short": "Sanctum of Innocence — Staff of Pur.",
+          "steps": [
+            "Kill Avarius",
+            "Take The Staff of Purity",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Oriath Docks",
+          "short": "Town — NPCs, WP to Ravaged Square",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Ravaged Square"
+          ]
+        },
+        {
+          "zone": "The Ravaged Square",
+          "short": "Ravaged Square — Control Blocks",
+          "steps": [
+            "Go to Control Blocks (down)"
+          ]
+        },
+        {
+          "zone": "The Control Blocks",
+          "short": "Control Blocks — tag WP, Vilenta",
+          "steps": [
+            "Tag WP (left of entrance)",
+            "Kill Vilenta (follow right-hand wall)",
+            "TP to Town"
+          ]
+        },
+        {
+          "zone": "Oriath Docks",
+          "short": "Town — NPCs, WP to Ravaged Square",
+          "steps": [
+            "Talk to NPCs",
+            "WP to Ravaged Square"
+          ]
+        },
+        {
+          "zone": "The Ravaged Square",
+          "short": "Ravaged Square — Ossuary, Trial",
+          "steps": [
+            "Go to Ossuary (next to WP)",
+            "Enter Bone Pits",
+            "Solve Trial",
+            "TP to Town",
+            "WP to Ravaged Square"
+          ],
+          "per_league": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "zone": "The Ravaged Square",
+          "short": "Ravaged Square — Innocence, Canals",
+          "steps": [
+            "Talk to Innocence (right from WP)",
+            "Go to Canals"
+          ]
+        },
+        {
+          "zone": "The Canals",
+          "short": "Canals — go to Feeding Trough",
+          "steps": [
+            "Go to Feeding Trough"
+          ]
+        },
+        {
+          "zone": "The Feeding Trough",
+          "short": "Feeding Trough — Altar of Hunger",
+          "steps": [
+            "Go to Altar of Hunger (top)"
+          ]
+        },
+        {
+          "zone": "Altar of Hunger",
+          "short": "Altar of Hunger — kill Kitava",
+          "steps": [
+            "Kill Kitava",
+            "Go to Oriath Docks",
+            "Talk to Lani for skill point"
+          ]
+        }
+      ]
+    }
+  }
+}

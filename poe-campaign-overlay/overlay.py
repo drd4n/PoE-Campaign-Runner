@@ -2,6 +2,8 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButt
 from PyQt6.QtCore import Qt, QRectF, pyqtSignal
 from PyQt6.QtGui import QFont, QPainter, QColor, QPainterPath
 
+from checklist_view import OFF_ROUTE_COLOR, checklist_html, header_text, progress_text
+
 _WIDTH = 360
 _MARGIN = 16
 _PADDING = 12
@@ -25,13 +27,55 @@ _BTN_STYLE = """
 """
 
 
+class BackButton(QWidget):
+    """A separate one-button window.
+
+    The checklist itself stays click-through, so the only patch of screen that
+    swallows clicks from the game is this button.
+    """
+
+    pressed = pyqtSignal()
+
+    def __init__(self):
+        super().__init__()
+        self.setWindowFlags(
+            Qt.WindowType.FramelessWindowHint
+            | Qt.WindowType.WindowStaysOnTopHint
+            | Qt.WindowType.Tool
+            | Qt.WindowType.WindowDoesNotAcceptFocus
+        )
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
+
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        button = QPushButton("◀ Back")
+        button.setStyleSheet(_BTN_STYLE)
+        button.setCursor(Qt.CursorShape.PointingHandCursor)
+        button.setToolTip("Go back one step")
+        button.clicked.connect(self.pressed.emit)
+        layout.addWidget(button)
+        self.adjustSize()
+
+    def dock_under(self, panel: QWidget) -> None:
+        """Sit just below the panel, right edges aligned."""
+        self.adjustSize()
+        self.move(
+            panel.x() + panel.width() - self.width(),
+            panel.y() + panel.height() + 6,
+        )
+
+
 class OverlayWindow(QWidget):
     act_selected = pyqtSignal(int)
+    back_pressed = pyqtSignal()
 
     def __init__(self):
         super().__init__()
         self._build_window()
         self._build_ui()
+        self._back = BackButton()
+        self._back.pressed.connect(self.back_pressed.emit)
 
     def _build_window(self) -> None:
         self.setWindowFlags(
@@ -49,10 +93,25 @@ class OverlayWindow(QWidget):
         layout.setContentsMargins(_PADDING, _PADDING, _PADDING, _PADDING)
         layout.setSpacing(4)
 
+        # Header: act on the left, checklist progress on the right.
+        header = QWidget()
+        header.setStyleSheet("background: transparent;")
+        header_layout = QHBoxLayout(header)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(8)
+
         self._act_label = QLabel()
         self._act_label.setFont(QFont("Consolas", 9))
         self._act_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
-        layout.addWidget(self._act_label)
+        header_layout.addWidget(self._act_label)
+        header_layout.addStretch()
+
+        self._progress_label = QLabel()
+        self._progress_label.setFont(QFont("Consolas", 9))
+        self._progress_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
+        header_layout.addWidget(self._progress_label)
+
+        layout.addWidget(header)
 
         self._zone_label = QLabel()
         self._zone_label.setFont(QFont("Consolas", 11, QFont.Weight.Bold))
@@ -77,6 +136,16 @@ class OverlayWindow(QWidget):
         layout.addWidget(self._button_container)
         self._button_container.hide()
 
+    def moveEvent(self, event) -> None:
+        super().moveEvent(event)
+        if self._back.isVisible():
+            self._back.dock_under(self)
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        if self._back.isVisible():
+            self._back.dock_under(self)
+
     def paintEvent(self, _event) -> None:
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
@@ -84,9 +153,51 @@ class OverlayWindow(QWidget):
         path.addRoundedRect(QRectF(self.rect()), 8, 8)
         painter.fillPath(path, _BG)
 
+    # --- act mode ---------------------------------------------------------
+
+    def show_checklist(self, act: int, steps, pointer: int, progress, off_route: bool) -> None:
+        """The whole act as a checklist: done steps ticked and collapsed, the
+        current step expanded into bullets, upcoming steps collapsed."""
+        self._button_container.hide()
+        self._zone_label.hide()
+        self._steps_label.show()
+
+        self._act_label.setText(header_text(act, off_route))
+        self._act_label.setStyleSheet(
+            f"color: {OFF_ROUTE_COLOR if off_route else _ACT_COLOR}; background: transparent;"
+        )
+        self._progress_label.setText(progress_text(progress))
+        self._progress_label.show()
+        # The checklist is HTML so each line can carry its own colour; map mode
+        # feeds this same label plain text, so the format has to be explicit.
+        self._steps_label.setTextFormat(Qt.TextFormat.RichText)
+        self._steps_label.setText(checklist_html(steps, pointer))
+
+        self._set_interactive(False)
+        self.adjustSize()
+        self._snap_top_right()
+        self.show()
+        self._back.dock_under(self)
+        self._back.show()
+
+    def show_campaign_complete(self) -> None:
+        self._back.hide()
+        self.show_status("Campaign complete.\nKitava is dead — go map.")
+
+    # --- map mode ---------------------------------------------------------
+
+    def _reset_chrome(self) -> None:
+        """Undo anything the checklist view set up."""
+        self._progress_label.hide()
+        self._zone_label.show()
+        self._steps_label.setTextFormat(Qt.TextFormat.PlainText)
+        self._act_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
+        self._back.hide()
+
     def show_status(self, message: str) -> None:
         """Show a plain status message (startup / waiting), so the overlay is
         visible immediately and the player knows it's running."""
+        self._reset_chrome()
         self._button_container.hide()
         self._steps_label.hide()
         self._act_label.setText("PoE Campaign Overlay")
@@ -97,6 +208,7 @@ class OverlayWindow(QWidget):
         self.show()
 
     def show_zone(self, zone_name: str, steps: list[str], act: int) -> None:
+        self._reset_chrome()
         self._button_container.hide()
         self._steps_label.show()
         self._act_label.setText(f"Act {act}" if act > 0 else "")
@@ -108,6 +220,7 @@ class OverlayWindow(QWidget):
         self.show()
 
     def show_act_selection(self, zone_name: str, possible_acts: list[int]) -> None:
+        self._reset_chrome()
         self._steps_label.hide()
         self._act_label.setText("Which act are you in?")
         self._zone_label.setText(f"◆  {zone_name}")
@@ -133,6 +246,7 @@ class OverlayWindow(QWidget):
 
     def show_no_data(self, zone_name: str) -> None:
         """Show the zone with a 'no data' note instead of hiding the overlay."""
+        self._reset_chrome()
         self._button_container.hide()
         self._steps_label.show()
         self._act_label.setText("")

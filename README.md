@@ -1,6 +1,6 @@
 # PoE Campaign Runner
 
-A lightweight, always-on-top overlay for Path of Exile 1 that shows zone objectives and waypoint hints as you move through the campaign. It reads your `Client.txt` log in real time — no game files are modified.
+A lightweight, always-on-top overlay for Path of Exile 1 that shows a checklist for the act you're in and tracks your position through it as you play. It reads your `Client.txt` log in real time — no game files are modified.
 
 ![Acts 1–10 supported]
 
@@ -8,10 +8,13 @@ A lightweight, always-on-top overlay for Path of Exile 1 that shows zone objecti
 
 ## Features
 
-- Tracks your progress through Acts 1–10 automatically
-- Shows objectives and directional hints per zone (e.g. "Waypoint — left of entrance", "Boss — top of zone")
+- Shows the **whole act as a checklist** — done steps ticked, the step you're on expanded into bullets, everything ahead listed
+- Follows you automatically: each zone change moves the pointer forward through the act
 - Handles duplicate zone names across acts (Lioneye's Watch, Crossroads, etc.) with an in-overlay act picker
-- Transparent, frameless, click-through — the overlay never steals focus or blocks gameplay
+- Marks once-per-league content (`⟲` Trials, Tidal Island) and optional detours (`○` Siosa's skill gems)
+- A `◀ Back` button steps the pointer back one when tracking gets ahead of you
+- Remembers where you were — progress survives a restart
+- Transparent, frameless, click-through — only the Back button takes clicks
 - Auto-discovers `Client.txt` on Steam/Wine/Windows; falls back to a manual file picker
 
 ---
@@ -31,10 +34,32 @@ pip install -r requirements.txt
 
 ```bash
 cd poe-campaign-overlay
-python3 main.py
+python3 main.py             # act checklist (default)
+python3 main.py --mode=map  # older per-zone view
 ```
 
-On first launch, if `Client.txt` is not found automatically, a file picker will open. The path is saved to `config.json` so subsequent launches skip this step.
+On first launch, if `Client.txt` is not found automatically, a file picker will open. The path is saved to `config.json` so subsequent launches skip this step, along with your act and step so the checklist comes back where you left it.
+
+### What the overlay shows
+
+```
+Act 2                                [10/24]
+  ✓ Southern Forest — town, Old Fields
+  ✓ Old Fields — Den, Great White Beast
+  …
+  ✓ Fellshrine Ruins — Crypt Level 1
+▶ Crypt Level 1 — Trial, Crypt Level 2
+     ⟲ Solve Trial
+     • Go to The Crypt Level 2
+    Crypt Level 2 — Golden Hand, skill pt
+    Town — go to Riverways
+    …
+                                  [ ◀ Back ]
+```
+
+`✓` done · `▶` current step, expanded · `⟲` once per league · `○` optional detour
+
+If you wander off the route the header reads `Act 2 · off route` and the pointer stays put until you rejoin.
 
 To simulate zone transitions for testing (no game needed):
 
@@ -60,14 +85,11 @@ Searches common installation paths (Steam, Wine, Windows) for `Client.txt`. If f
 
 Once confirmed, `save_client_log_path()` writes the path to `config.json` so the next launch skips the search.
 
-### 3. Build the tracker — `zone_data.py: ZoneTracker.__init__()`
+### 3. Build the tracker — `act_data.py: ActTracker.__init__()`
 
-Loads `zones.json` into two dictionaries:
+Loads `acts.json` — 211 steps across 10 acts, each `{ zone, short, steps[] }` plus optional `per_league` / `optional` flags — and builds a zone → `(act, index)` index from it. Act mode never reads `zones.json`.
 
-- `_milestones` — maps zone name → act number (e.g. `"Southern Forest" → 2`). Used to auto-advance the act counter as you progress.
-- `_zones` — maps zone name → act → `{ steps: [...] }`. The full guide data for all 10 acts.
-
-`current_act` starts at `0` (unknown until the first recognisable zone is seen).
+`current_act` starts at `0` and `pointer` at `0`; a saved position from `config.json` is restored over them if there is one.
 
 ### 4. Build the overlay — `overlay.py: OverlayWindow.__init__()`
 
@@ -80,7 +102,9 @@ Two sub-calls:
 - `WA_TranslucentBackground` — window background is transparent
 - `WindowTransparentForInput` — mouse clicks pass through to the game
 
-**`_build_ui()`** builds the label hierarchy (act label → zone label → steps label) and a hidden `_button_container` with an `QHBoxLayout` reserved for act-selection buttons when a zone is ambiguous.
+**`_build_ui()`** builds the label hierarchy (header row with act + progress → zone label → steps label) and a hidden `_button_container` with a `QHBoxLayout` reserved for act-selection buttons when a zone is ambiguous.
+
+`BackButton` is a **second, separate window** holding only `◀ Back`. The checklist panel keeps `WindowTransparentForInput`, so the only pixels that swallow clicks from the game are the button itself. It re-docks under the panel's bottom-right corner on every move and resize.
 
 ### 5. Start watching the log — `log_watcher.py: LogWatcher.run()`
 
@@ -98,57 +122,42 @@ The regex `r"You have entered (.+)\."` matches only the exact PoE zone-entry for
 
 The main thread blocks here, processing Qt events. The log watcher runs in the background thread. When it emits `zone_changed`, Qt delivers it safely to the main thread — no manual locking needed.
 
-### 7. Zone entered — `main.py: on_zone_changed(zone_name)`
+### 7. Zone entered — `act_data.py: ActTracker.enter_zone(zone)`
 
-Every zone transition arrives here. It calls `tracker.enter_zone(zone_name)`, which runs two steps in sequence:
+Every zone transition arrives here and can only move the pointer **forward**, which is what makes repeated zones work — "Town" appears five times in Act 2, "Coast" twice in a row in Act 1.
 
-**`_update_act(zone_name)`** — updates `current_act`:
-- Special case: `"Lioneye's Watch"` with `current_act == 5` → advance to act 6. This is the only zone that exists in two acts with different steps.
-- Normal case: check `_milestones`. If the zone is listed and its act is higher than the current one, advance.
-- No match: `current_act` stays unchanged.
+1. **Scan forward** from the pointer for the next step in this act with that zone. Found → jump there, ticking everything passed. Re-entering the zone the pointer already sits on means you left and came back, so the scan starts one step later.
+2. **Zone is behind us** (backtracking) → hold the pointer, flag `off_route`.
+3. **Zone belongs to another act** → switch, but only if it *starts* that act. Without that guard, walking into Act 1's Tidal Island would yank you to Act 6, where Tidal Island is step 4. At cold start there's no act to protect, so any position is accepted.
+4. **Several acts qualify** (Crossroads → 2 and 7) → `Update("ambiguous")`, and the overlay asks. When the next act is among the candidates it wins automatically, which is how Act 5 → 6 at Lioneye's Watch resolves without a prompt.
+5. **Zone in no act** → `Update("unknown")`; the overlay shows a waiting message.
 
-**`_resolve_steps(zone_name)`** — looks up the steps:
-- Try `_zones[zone_name][str(current_act)]` — exact act match.
-- If no match and the zone has only one act entry, use that (unambiguous zone).
-- If still no match (zone has multiple act entries and the act is unknown), return `None`.
+Zones named inside the current step's own bullets (Tidal Island, the Catacombs, Black Core) count as on-plan: the pointer holds without the off-route flag.
 
-### 8a. Steps found → `overlay.py: show_zone()`
+### 8. Draw — `main.py: render()`
 
-`show_zone(zone_name, steps, act)`:
-1. Hides the button container, shows the steps label
-2. Calls `_set_interactive(False)` — restores `WindowTransparentForInput = True` (click-through)
-3. Updates the act / zone / steps labels
-4. `adjustSize()` — resizes the window to fit the content
-5. `_snap_top_right()` — repositions to the top-right corner of the primary screen
-6. `show()` — makes the overlay visible
+`overlay.show_checklist(act, steps, pointer, progress, off_route)` renders via `checklist_view.checklist_html()` — done steps ticked, current step expanded, upcoming steps collapsed — then `config.save_progress()` writes act and pointer to `config.json`.
 
-### 8b. Ambiguous zone → `overlay.py: show_act_selection()`
+`progress()` counts mandatory steps only, so the optional Siosa detour doesn't inflate the denominator.
 
-When `enter_zone` returns `None`, `on_zone_changed` calls `tracker.get_possible_acts(zone_name)` to get the list of acts this zone has data for (e.g. `[1, 6]` for Lioneye's Watch).
+### 9. Corrections — the act picker and `◀ Back`
 
-The zone name is stored in `pending_zone`. Then `show_act_selection(zone_name, [1, 6])`:
-1. Hides the steps label, shows the button container
-2. Builds one `QPushButton("Act N")` per possible act; each button emits `overlay.act_selected(N)` when clicked
-3. Calls `_set_interactive(True)` — sets `WindowTransparentForInput = False` so the player can click the buttons
-4. `adjustSize()` + `_snap_top_right()` + `show()`
+An ambiguous zone stores the zone in `pending_zone` and shows the same act-selection buttons map mode uses; the pick calls `set_act(act, zone)`, which lands the pointer on that act's first matching step.
 
-### 9. Player picks an act → `main.py: on_act_selected(act)`
+`◀ Back` calls `tracker.back()` — pointer −1, unticking that step, rolling into the previous act's last step at a boundary. Auto-tracking resumes from wherever it leaves you.
 
-Fired when the player clicks an act button:
-1. `tracker.set_act(act)` — sets `current_act` directly
-2. Retrieves `pending_zone` (the zone that triggered the picker)
-3. `tracker.resolve_current(zone_name)` — resolves steps using the now-known act, without re-running `_update_act`
-4. `overlay.show_zone()` displays the steps
+### 10. End of the campaign
 
-From this point `current_act` is set. All subsequent zones resolve automatically via milestones or the single-act fallback, without requiring player input again.
+Reaching Act 10's last step isn't the end — you still have to kill Kitava. Leaving that step for a zone it doesn't mention sets a sticky `completed` flag and the overlay shows "campaign complete", so heading back to the Blood Aqueduct to level doesn't rewind the tracker to Act 9. `◀ Back` resumes tracking.
 
 ### Flow diagram
 
 ```
 main()
  ├─ find_client_log()            → path to Client.txt
- ├─ ZoneTracker()                → loads zones.json into memory
+ ├─ parse_mode(sys.argv)         → "act" (default) or "map"
  ├─ OverlayWindow()              → frameless, transparent, always-on-top window
+ ├─ wire_act_mode(overlay)       → ActTracker + restored progress
  ├─ LogWatcher.start()           → background thread tailing Client.txt
  └─ app.exec()                   → event loop
 
@@ -158,19 +167,19 @@ main()
 
   [main thread, on signal]
   on_zone_changed(name)
-   ├─ ZoneTracker.enter_zone()
-   │   ├─ _update_act()          → advance current_act via milestones
-   │   └─ _resolve_steps()       → look up steps for current act
-   │
-   ├─ steps found      → overlay.show_zone()          (click-through)
-   ├─ ambiguous zone   → overlay.show_act_selection() (interactive)
-   └─ unknown zone     → overlay.hide_zone()
+   └─ ActTracker.enter_zone()
+       ├─ "moved"/"held" → render()  → show_checklist() + save_progress()
+       ├─ "ambiguous"    → overlay.show_act_selection()  (interactive)
+       └─ "unknown"      → overlay.show_status()
 
-  [player clicks act button]
-  on_act_selected(act)
-   ├─ tracker.set_act(act)
-   └─ overlay.show_zone(tracker.resolve_current(zone))
+  [player clicks]
+  act button  → tracker.set_act(act, pending_zone) → render()
+  ◀ Back      → tracker.back()                     → render()
 ```
+
+### Map mode — `--mode=map`
+
+The original per-zone view is untouched behind the flag: `ZoneTracker` reads `zones.json` (`_milestones` zone → act, `_zones` zone → act → steps), advances the act on milestone zones, and `show_zone()` prints the steps for the zone you're standing in. `enter_zone()` returning `None` for a zone that exists in several acts is what triggers the act picker there.
 
 ---
 
@@ -178,14 +187,19 @@ main()
 
 ```
 poe-campaign-overlay/
-├── main.py           # Entry point — wires all components together
-├── config.py         # Finds and saves the Client.txt path
-├── log_watcher.py    # Background thread that tails Client.txt
-├── zone_data.py      # ZoneTracker — act logic and step lookup
-├── overlay.py        # PyQt6 overlay window
-├── zones.json        # All zone steps and act milestones for Acts 1–10
-├── simulate.py       # Test helper — writes fake log lines to /tmp
-├── test_zones.py     # Headless tests for ZoneTracker logic
+├── main.py             # Entry point — mode selection and wiring
+├── config.py           # Client.txt path and saved progress
+├── log_watcher.py      # Background thread that tails Client.txt
+├── act_data.py         # ActTracker — the act checklist and position pointer
+├── acts.json           # 211 steps across Acts 1–10          (act mode)
+├── checklist_view.py   # Checklist rendering — pure strings, no Qt
+├── overlay.py          # PyQt6 overlay window + Back button window
+├── zone_data.py        # ZoneTracker — per-zone lookup        (map mode)
+├── zones.json          # Zone steps and act milestones        (map mode)
+├── simulate.py         # Test helper — writes fake log lines to /tmp
+├── test_acts.py        # Headless tests for ActTracker logic
+├── test_act_mode.py    # Headless tests for the wiring and rendering
+├── test_zones.py       # Headless tests for ZoneTracker logic
 └── requirements.txt
 ```
 
@@ -195,7 +209,17 @@ poe-campaign-overlay/
 
 ```bash
 cd poe-campaign-overlay
-python3 test_zones.py
+python3 test_acts.py       # ActTracker: 70 checks
+python3 test_act_mode.py   # log line → overlay wiring + rendering: 32 checks
+python3 test_zones.py      # ZoneTracker (map mode)
 ```
 
-No PyQt6 usage — tests run headlessly and cover the full campaign path plus act-selection disambiguation.
+All three run headlessly — no display needed. `test_act_mode.py` stubs PyQt6 so `main.py`'s wiring is covered without Qt installed; between them they walk the full campaign, both duplicate-zone cases, act switching, off-route holds, the Back button, persistence and completion.
+
+---
+
+## Data & Credits
+
+`acts.json` is adapted from the [PoE Wiki *Acts quick guide*](https://www.poewiki.net/wiki/Guide:Acts_quick_guide), used under **CC BY-NC-SA 3.0**. It was converted once (source URL, revision and licence are recorded in the file's `_source` header) and is hand-maintained from there — there is no re-fetch step.
+
+`zones.json` predates it and remains the map-mode data source.

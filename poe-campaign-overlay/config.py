@@ -22,6 +22,22 @@ SEARCH_PATHS = [
 ]
 
 
+def _read() -> dict:
+    if not CONFIG_FILE.exists():
+        return {}
+    try:
+        with open(CONFIG_FILE) as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError) as e:
+        log.warning("Could not read config.json (%s).", e)
+        return {}
+
+
+def _write(data: dict) -> None:
+    with open(CONFIG_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
 def find_client_log() -> str | None:
     """Check config.json first, then search known paths. Returns path string or None."""
     if CONFIG_FILE.exists():
@@ -46,6 +62,22 @@ def find_client_log() -> str | None:
 
 
 def save_client_log_path(path: str) -> None:
-    with open(CONFIG_FILE, "w") as f:
-        json.dump({"client_log_path": path}, f, indent=2)
+    data = _read()
+    data["client_log_path"] = path
+    _write(data)
     log.info("Saved Client.txt path to config.json: %s", path)
+
+
+def load_progress() -> tuple[int, int] | None:
+    """Saved (act, step) for act mode, or None if there isn't one."""
+    data = _read()
+    act, step = data.get("act"), data.get("step")
+    if isinstance(act, int) and isinstance(step, int):
+        return act, step
+    return None
+
+
+def save_progress(act: int, step: int) -> None:
+    data = _read()
+    data["act"], data["step"] = act, step
+    _write(data)
