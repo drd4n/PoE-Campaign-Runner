@@ -81,6 +81,7 @@ class FakeOverlay:
     def __init__(self):
         self.act_selected = _Signal()
         self.back_pressed = _Signal()
+        self.next_pressed = _Signal()
         self.calls: list[tuple] = []
         self.checklist = None
 
@@ -169,6 +170,26 @@ def test_back_button(tmp: Path):
     check("back at the very first step redraws nothing", len(overlay.calls) == before)
 
 
+def test_next_button(tmp: Path):
+    print("\n--- next button ---")
+    overlay, on_zone = wired(tmp / "n.json")
+    on_zone("The Twilight Strand")
+
+    overlay.next_pressed.emit()
+    _, act, pointer, progress, _ = overlay.last("checklist")
+    check("next redraws one step on", pointer == 1, str(pointer))
+    check("…with the step behind ticked", progress == (1, 18), str(progress))
+
+    overlay.back_pressed.emit()
+    check("back undoes it", overlay.last("checklist")[2] == 0)
+
+    # Nothing to draw when there's no act yet.
+    overlay2, _ = wired(tmp / "n2.json")
+    before = len(overlay2.calls)
+    overlay2.next_pressed.emit()
+    check("next before any zone redraws nothing", len(overlay2.calls) == before)
+
+
 def test_persistence(tmp: Path):
     print("\n--- persistence ---")
     cfg = tmp / "d.json"
@@ -252,6 +273,7 @@ if __name__ == "__main__":
         test_zone_to_overlay(tmp)
         test_picker(tmp)
         test_back_button(tmp)
+        test_next_button(tmp)
         test_persistence(tmp)
         test_non_campaign_zone(tmp)
         test_campaign_complete(tmp)

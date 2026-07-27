@@ -231,6 +231,27 @@ class ActTracker:
                     self.pointer = i
                     break
 
+    def forward(self) -> bool:
+        """Step the pointer on one, rolling into the next act past the last step.
+
+        Needed where two steps in a row share a zone (Act 2's Western Forest,
+        Act 6's Prisoner's Gate): with no zone change between them, nothing in
+        the log says the first one is done.
+        """
+        self.off_route = False
+        self._last_zone = None
+        if self.completed or not self.current_act:
+            return False
+        if self.pointer < len(self.steps) - 1:
+            self.pointer += 1
+            return True
+        if self.current_act < max(self._acts):
+            self.current_act += 1
+            self.pointer = 0
+            return True
+        self.completed = True  # past the last step of Act 10
+        return True
+
     def back(self) -> bool:
         """Step the pointer back one, rolling into the previous act at step 1."""
         self.off_route = False

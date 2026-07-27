@@ -152,8 +152,14 @@ def wire_act_mode(overlay: OverlayWindow):
             log.info("Back → act %d step %d.", tracker.current_act, tracker.pointer + 1)
             render()
 
+    def on_next() -> None:
+        if tracker.forward():
+            log.info("Next → act %d step %d.", tracker.current_act, tracker.pointer + 1)
+            render()
+
     overlay.act_selected.connect(on_act_selected)
     overlay.back_pressed.connect(on_back)
+    overlay.next_pressed.connect(on_next)
     return on_zone_changed
 
 

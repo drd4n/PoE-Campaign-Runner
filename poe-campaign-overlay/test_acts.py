@@ -194,6 +194,48 @@ def test_back():
 # --- optional and per-league ------------------------------------------------
 
 
+def test_forward():
+    print("\n--- next button ---")
+    t = fresh()
+    t.enter_zone("The Twilight Strand")
+    check("next moves one step on", t.forward() is True and t.pointer == 1)
+    done, _ = t.progress()
+    check("…and ticks the step behind", done == 1, str(done))
+
+    # The case it exists for: two steps in a row in the same zone.
+    t = fresh()
+    for zone in ("The Twilight Strand", "The Southern Forest", "The Riverways", "The Western Forest"):
+        t.enter_zone(zone)
+    check("Western Forest lands on the Alira step", t.pointer == 14, str(t.pointer))
+    t.forward()
+    check("next reaches the Arteri step without leaving the zone",
+          t.current_step.short.startswith("Western Forest — Arteri"), t.current_step.short)
+
+    # Rolling over an act boundary.
+    t = fresh()
+    t.enter_zone("The Twilight Strand")
+    t.pointer = len(t.steps) - 1
+    check("next past act 1's last step enters act 2", t.forward() is True and t.current_act == 2)
+    check("…at step 1", t.pointer == 0)
+
+    # …and off the end of the campaign.
+    t = fresh()
+    t.enter_zone("Oriath Docks")
+    t.pointer = len(t.steps) - 1
+    check("next past act 10's last step finishes", t.forward() is True and t.finished is True)
+    check("next does nothing once finished", t.forward() is False)
+
+    t = fresh()
+    check("next does nothing before an act is known", t.forward() is False)
+
+    t = fresh()
+    t.enter_zone("The Twilight Strand")
+    t.enter_zone("The Ship Graveyard")
+    t.enter_zone("The Coast")  # off route
+    t.forward()
+    check("next clears off-route", t.off_route is False)
+
+
 def test_flags():
     print("\n--- optional / per-league ---")
     t = fresh()
@@ -332,6 +374,7 @@ if __name__ == "__main__":
     test_transitions()
     test_off_route()
     test_back()
+    test_forward()
     test_flags()
     test_restore()
     test_completion()

@@ -27,14 +27,15 @@ _BTN_STYLE = """
 """
 
 
-class BackButton(QWidget):
-    """A separate one-button window.
+class StepButtons(QWidget):
+    """A separate two-button window.
 
     The checklist itself stays click-through, so the only patch of screen that
-    swallows clicks from the game is this button.
+    swallows clicks from the game is these buttons.
     """
 
-    pressed = pyqtSignal()
+    back_pressed = pyqtSignal()
+    next_pressed = pyqtSignal()
 
     def __init__(self):
         super().__init__()
@@ -49,12 +50,17 @@ class BackButton(QWidget):
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
-        button = QPushButton("◀ Back")
-        button.setStyleSheet(_BTN_STYLE)
-        button.setCursor(Qt.CursorShape.PointingHandCursor)
-        button.setToolTip("Go back one step")
-        button.clicked.connect(self.pressed.emit)
-        layout.addWidget(button)
+        layout.setSpacing(6)
+        for label, tip, signal in (
+            ("◀ Back", "Go back one step", self.back_pressed),
+            ("Next ▶", "Skip on one step", self.next_pressed),
+        ):
+            button = QPushButton(label)
+            button.setStyleSheet(_BTN_STYLE)
+            button.setCursor(Qt.CursorShape.PointingHandCursor)
+            button.setToolTip(tip)
+            button.clicked.connect(signal.emit)
+            layout.addWidget(button)
         self.adjustSize()
 
     def dock_under(self, panel: QWidget) -> None:
@@ -66,13 +72,15 @@ class BackButton(QWidget):
 class OverlayWindow(QWidget):
     act_selected = pyqtSignal(int)
     back_pressed = pyqtSignal()
+    next_pressed = pyqtSignal()
 
     def __init__(self):
         super().__init__()
         self._build_window()
         self._build_ui()
-        self._back = BackButton()
-        self._back.pressed.connect(self.back_pressed.emit)
+        self._buttons = StepButtons()
+        self._buttons.back_pressed.connect(self.back_pressed.emit)
+        self._buttons.next_pressed.connect(self.next_pressed.emit)
 
     def _build_window(self) -> None:
         self.setWindowFlags(
@@ -135,13 +143,13 @@ class OverlayWindow(QWidget):
 
     def moveEvent(self, event) -> None:
         super().moveEvent(event)
-        if self._back.isVisible():
-            self._back.dock_under(self)
+        if self._buttons.isVisible():
+            self._buttons.dock_under(self)
 
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
-        if self._back.isVisible():
-            self._back.dock_under(self)
+        if self._buttons.isVisible():
+            self._buttons.dock_under(self)
 
     def paintEvent(self, _event) -> None:
         painter = QPainter(self)
@@ -174,11 +182,11 @@ class OverlayWindow(QWidget):
         self.adjustSize()
         self._snap_top_left()
         self.show()
-        self._back.dock_under(self)
-        self._back.show()
+        self._buttons.dock_under(self)
+        self._buttons.show()
 
     def show_campaign_complete(self) -> None:
-        self._back.hide()
+        self._buttons.hide()
         self.show_status("Campaign complete.\nKitava is dead — go map.")
 
     # --- map mode ---------------------------------------------------------
@@ -189,7 +197,7 @@ class OverlayWindow(QWidget):
         self._zone_label.show()
         self._steps_label.setTextFormat(Qt.TextFormat.PlainText)
         self._act_label.setStyleSheet(f"color: {_ACT_COLOR}; background: transparent;")
-        self._back.hide()
+        self._buttons.hide()
 
     def show_status(self, message: str) -> None:
         """Show a plain status message (startup / waiting), so the overlay is

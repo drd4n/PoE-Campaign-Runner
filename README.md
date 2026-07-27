@@ -12,9 +12,9 @@ A lightweight, always-on-top overlay for Path of Exile 1 that shows a checklist 
 - Follows you automatically: each zone change moves the pointer forward through the act
 - Handles duplicate zone names across acts (Lioneye's Watch, Crossroads, etc.) with an in-overlay act picker
 - Marks once-per-league content (`⟲` Trials, Tidal Island) and optional detours (`○` Siosa's skill gems)
-- A `◀ Back` button steps the pointer back one when tracking gets ahead of you
+- `◀ Back` and `Next ▶` buttons nudge the pointer a step either way when tracking drifts
 - Remembers where you were — progress survives a restart
-- Transparent, frameless, click-through — only the Back button takes clicks
+- Transparent, frameless, click-through — only the two step buttons take clicks
 - Auto-discovers `Client.txt` on Steam/Wine/Windows; falls back to a manual file picker
 
 ---
@@ -54,7 +54,7 @@ Act 2                                [10/24]
     Crypt Level 2 — Golden Hand, skill pt
     Town — go to Riverways
     …
-                                  [ ◀ Back ]
+[ ◀ Back ]  [ Next ▶ ]
 ```
 
 `✓` done · `▶` current step, expanded · `⟲` once per league · `○` optional detour
@@ -104,7 +104,7 @@ Two sub-calls:
 
 **`_build_ui()`** builds the label hierarchy (header row with act + progress → zone label → steps label) and a hidden `_button_container` with a `QHBoxLayout` reserved for act-selection buttons when a zone is ambiguous.
 
-`BackButton` is a **second, separate window** holding only `◀ Back`. The checklist panel keeps `WindowTransparentForInput`, so the only pixels that swallow clicks from the game are the button itself. It re-docks under the panel's bottom-left corner on every move and resize.
+`StepButtons` is a **second, separate window** holding `◀ Back` and `Next ▶`. The checklist panel keeps `WindowTransparentForInput`, so the only pixels that swallow clicks from the game are the buttons themselves. It re-docks under the panel's bottom-left corner on every move and resize.
 
 The panel itself snaps to the **top-left** of the primary screen (`_snap_top_left()`), a `_MARGIN` in from each edge.
 
@@ -134,7 +134,7 @@ Every zone transition arrives here and can only move the pointer **forward**, wh
 4. **Several acts qualify** (Crossroads → 2 and 7) → `Update("ambiguous")`, and the overlay asks. When the next act is among the candidates it wins automatically, which is how Act 5 → 6 at Lioneye's Watch resolves without a prompt.
 5. **Zone in no act** → `Update("unknown")`; the overlay shows a waiting message.
 
-Zones named inside the current step's own bullets (Tidal Island, the Catacombs, Black Core) count as on-plan: the pointer holds without the off-route flag.
+Between 1 and 2 there's a fallback: plenty of zones are named only inside a step's instructions rather than heading one of their own — Act 1's Mud Flats and Tidal Island both live inside Coast steps. If no step *zone* matches, the tracker scans forward for a step whose bullets name the zone and moves there, so walking the route as written never reads as off-route.
 
 ### 8. Draw — `main.py: render()`
 
@@ -142,11 +142,15 @@ Zones named inside the current step's own bullets (Tidal Island, the Catacombs, 
 
 `progress()` counts mandatory steps only, so the optional Siosa detour doesn't inflate the denominator.
 
-### 9. Corrections — the act picker and `◀ Back`
+### 9. Corrections — the act picker, `◀ Back` and `Next ▶`
 
 An ambiguous zone stores the zone in `pending_zone` and shows the same act-selection buttons map mode uses; the pick calls `set_act(act, zone)`, which lands the pointer on that act's first matching step.
 
-`◀ Back` calls `tracker.back()` — pointer −1, unticking that step, rolling into the previous act's last step at a boundary. Auto-tracking resumes from wherever it leaves you.
+`◀ Back` calls `tracker.back()` — pointer −1, unticking that step, rolling into the previous act's last step at a boundary.
+
+`Next ▶` calls `tracker.forward()` — pointer +1, rolling into the next act past the last step. It exists because six places in the campaign run two steps in a row in the same zone (Act 2's Western Forest, Act 6's Prisoner's Gate, Act 10's Ravaged Square…): with no zone change between them, nothing in the log says the first one is done.
+
+Auto-tracking resumes from wherever either button leaves you.
 
 ### 10. End of the campaign
 
@@ -177,6 +181,7 @@ main()
   [player clicks]
   act button  → tracker.set_act(act, pending_zone) → render()
   ◀ Back      → tracker.back()                     → render()
+  Next ▶      → tracker.forward()                  → render()
 ```
 
 ### Map mode — `--mode=map`
@@ -195,7 +200,7 @@ poe-campaign-overlay/
 ├── act_data.py         # ActTracker — the act checklist and position pointer
 ├── acts.json           # 211 steps across Acts 1–10          (act mode)
 ├── checklist_view.py   # Checklist rendering — pure strings, no Qt
-├── overlay.py          # PyQt6 overlay window + Back button window
+├── overlay.py          # PyQt6 overlay window + step button window
 ├── zone_data.py        # ZoneTracker — per-zone lookup        (map mode)
 ├── zones.json          # Zone steps and act milestones        (map mode)
 ├── simulate.py         # Test helper — writes fake log lines to /tmp
@@ -211,12 +216,12 @@ poe-campaign-overlay/
 
 ```bash
 cd poe-campaign-overlay
-python3 test_acts.py       # ActTracker: 70 checks
-python3 test_act_mode.py   # log line → overlay wiring + rendering: 32 checks
+python3 test_acts.py       # ActTracker: 80 checks
+python3 test_act_mode.py   # log line → overlay wiring + rendering: 36 checks
 python3 test_zones.py      # ZoneTracker (map mode)
 ```
 
-All three run headlessly — no display needed. `test_act_mode.py` stubs PyQt6 so `main.py`'s wiring is covered without Qt installed; between them they walk the full campaign, both duplicate-zone cases, act switching, off-route holds, the Back button, persistence and completion.
+All three run headlessly — no display needed. `test_act_mode.py` stubs PyQt6 so `main.py`'s wiring is covered without Qt installed; between them they walk the full campaign, both duplicate-zone cases, act switching, off-route holds, both step buttons, persistence and completion.
 
 ---
 
